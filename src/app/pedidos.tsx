@@ -1,0 +1,347 @@
+import { router, useFocusEffect } from "expo-router";
+import { useCallback, useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import {
+    Image,
+    ImageBackground,
+    Pressable,
+    Text,
+    View,
+    ScrollView,
+} from "react-native";
+
+import globalStyle from "@/styles/globalStyle";
+import pedidosStyle from "@/styles/pedidosStyle";
+import Footer from "@/components/footer";
+import { voltar } from "@/utils/navegacao";
+import { useConfiguracoes } from "@/utils/loja";
+import {
+    buscarPedidos,
+    etapaDoStatus,
+    Pedido,
+    pedirNovamente,
+    textoDoStatus,
+} from "@/utils/pedidos";
+import { avisar } from "@/utils/avisar";
+
+type AbaPedido = "andamento" | "entregues";
+
+
+function iconeDoStatus(etapa: number) {
+    if (etapa === 1) return require("@/assets/images/img/aguardando-laranja.png");
+    if (etapa === 3) return require("@/assets/images/img/delivery-laranja.png");
+    return require("@/assets/images/img/preparando-laranja.png");
+}
+
+export default function PedidosScreen() {
+    const [aba, setAba] = useState<AbaPedido>("andamento");
+    const { previsaoEntrega } = useConfiguracoes();
+    const [pedidos, setPedidos] = useState<Pedido[]>([]);
+    // Número do pedido que está sendo repetido (evita toque duplo)
+    const [repetindo, setRepetindo] = useState<number | null>(null);
+
+    // Coloca os itens do pedido na sacola e abre a Sacola
+    async function repetirPedido(pedido: Pedido) {
+        if (repetindo !== null) return;
+        setRepetindo(pedido.numero);
+        try {
+            const { adicionados, indisponiveis } = await pedirNovamente(pedido);
+            if (adicionados === 0) {
+                avisar("Os produtos deste pedido não estão mais disponíveis.");
+                return;
+            }
+            if (indisponiveis.length > 0) {
+                avisar(`Estes produtos não estão mais disponíveis e ficaram de fora: ${indisponiveis.join(", ")}.`);
+            }
+            router.push("/sacola");
+        } catch (e) {
+            avisar(e instanceof Error ? e.message : "Não foi possível repetir o pedido.");
+        } finally {
+            setRepetindo(null);
+        }
+    }
+
+    // Carrega do banco os pedidos do cliente logado
+    useFocusEffect(useCallback(() => {
+        async function carregarPedidos() {
+            try {
+                setPedidos(await buscarPedidos());
+            } catch (erro) {
+                console.error("Erro ao carregar pedidos:", erro);
+            }
+        }
+
+        carregarPedidos();
+    }, []));
+
+    // Aguardando, em preparo e a caminho ficam na aba "Em preparo"
+    const pedidosAndamento = pedidos
+        .filter((pedido) => [1, 2, 3].includes(etapaDoStatus(pedido.status)))
+        .map((pedido) => {
+            const etapa = etapaDoStatus(pedido.status);
+            return {
+                ...pedido,
+                statusLabel: etapa === 3 ? "A caminho" : textoDoStatus(etapa),
+                statusIcone: iconeDoStatus(etapa),
+                previsao: previsaoEntrega,
+            };
+        });
+    // Aba "Histórico": finalizados e cancelados
+    const pedidosEntregues = pedidos.filter((pedido) =>
+        [0, 5].includes(etapaDoStatus(pedido.status))
+    );
+
+    return (
+        <View style={globalStyle.container}>
+            <ImageBackground
+                source={require("@/assets/images/img/00_fundo.png")}
+                style={globalStyle.background}
+                resizeMode="stretch"
+            >
+                <SafeAreaView style={globalStyle.areaConteudo}>
+                    <ScrollView style={globalStyle.scrollConteudo}>
+                        <View style={pedidosStyle.header}>
+                            <View style={pedidosStyle.conteudo}>
+                                <Image
+                                    style={pedidosStyle.logo}
+                                    source={require("@/assets/images/img/logo.png")}
+                                />
+                            </View>
+                            <Text style={pedidosStyle.titulo}>Meus pedidos</Text>
+                            <Text style={pedidosStyle.subtitulo}>
+                                Acompanhe seus pedidos e seu histórico
+                            </Text>
+                        </View>
+
+                        <View style={pedidosStyle.main}>
+                            <View style={pedidosStyle.abas}>
+                                <Pressable
+                                    style={[
+                                        pedidosStyle.aba,
+                                        aba === "andamento" && pedidosStyle.abaAtiva,
+                                    ]}
+                                    onPress={() => setAba("andamento")}
+                                >
+                                    <Text
+                                        style={[
+                                            pedidosStyle.txtAba,
+                                            aba === "andamento" && pedidosStyle.txtAbaAtiva,
+                                        ]}
+                                    >
+                                        Em preparo
+                                    </Text>
+                                </Pressable>
+                                <Pressable
+                                    style={[
+                                        pedidosStyle.aba,
+                                        aba === "entregues" && pedidosStyle.abaAtiva,
+                                    ]}
+                                    onPress={() => setAba("entregues")}
+                                >
+                                    <Text
+                                        style={[
+                                            pedidosStyle.txtAba,
+                                            aba === "entregues" && pedidosStyle.txtAbaAtiva,
+                                        ]}
+                                    >
+                                        Histórico
+                                    </Text>
+                                </Pressable>
+                            </View>
+
+                            {aba === "andamento" &&
+                                pedidosAndamento.map((pedido) => (
+                                    <View key={pedido.numero} style={pedidosStyle.cardPedido}>
+                                        <View style={pedidosStyle.topoPedido}>
+                                            <View style={pedidosStyle.linhaNumeroPedido}>
+                                                <View style={pedidosStyle.iconeCaixaPedido}>
+                                                    <Image
+                                                        style={pedidosStyle.imgPedido}
+                                                        source={require("@/assets/images/img/pedido.png")}
+                                                    />
+                                                </View>
+                                                <Text style={pedidosStyle.txtNumeroPedido}>
+                                                    Pedido #{pedido.numero}
+                                                </Text>
+                                            </View>
+                                            <View style={pedidosStyle.linhaStatus}>
+                                                <Image
+                                                    style={pedidosStyle.imgStatus}
+                                                    source={pedido.statusIcone}
+                                                />
+                                                <Text style={pedidosStyle.txtStatus}>
+                                                    {pedido.statusLabel}
+                                                </Text>
+                                            </View>
+                                        </View>
+
+                                        <View style={pedidosStyle.listaItens}>
+                                            {pedido.itens.map((item) => (
+                                                <View key={item.id} style={pedidosStyle.linhaItem}>
+                                                    <Image
+                                                        style={pedidosStyle.imgItem}
+                                                        source={item.imagem}
+                                                    />
+                                                    <Text style={pedidosStyle.txtItem}>{item.nome}</Text>
+                                                </View>
+                                            ))}
+                                        </View>
+
+                                        <View style={pedidosStyle.divisor} />
+
+                                        <View style={pedidosStyle.rodapePedido}>
+                                            <View>
+                                                <Text style={pedidosStyle.txtLabelTotal}>Total</Text>
+                                                <Text style={pedidosStyle.txtValorTotal}>
+                                                    R$ {pedido.total.toFixed(2).replace(".", ",")}
+                                                </Text>
+                                            </View>
+                                            <View style={pedidosStyle.previsao}>
+                                                <View style={pedidosStyle.linhaPrevisao}>
+                                                    <Image
+                                                        style={pedidosStyle.imgPrevisao}
+                                                        source={require("@/assets/images/img/previsao.png")}
+                                                    />
+                                                    <Text style={pedidosStyle.txtValorPrevisao}>
+                                                        {pedido.previsao}
+                                                    </Text>
+                                                </View>
+                                                <Text style={pedidosStyle.txtLabelPrevisao}>
+                                                    Previsto
+                                                </Text>
+                                            </View>
+                                        </View>
+
+                                        <Pressable
+                                            style={pedidosStyle.btnDetalhes}
+                                            onPress={() =>
+                                                router.push({
+                                                    pathname: "/detalhesPedido",
+                                                    params: { id: pedido.numero },
+                                                })
+                                            }
+                                        >
+                                            <Text style={pedidosStyle.txtDetalhes}>
+                                                Ver detalhes
+                                            </Text>
+                                        </Pressable>
+                                    </View>
+                                ))}
+
+                            {aba === "entregues" &&
+                                pedidosEntregues.map((pedido) => {
+                                    const cancelado = etapaDoStatus(pedido.status) === 0;
+                                    return (
+                                    <View
+                                        key={pedido.numero}
+                                        style={[
+                                            pedidosStyle.cardPedidoEntregue,
+                                            cancelado && pedidosStyle.cardPedidoCancelado,
+                                        ]}
+                                    >
+                                        <View style={pedidosStyle.topoPedido}>
+                                            <View style={pedidosStyle.linhaNumeroPedido}>
+                                                <View style={pedidosStyle.iconeCaixaPedidoVerde}>
+                                                    <Image
+                                                        style={pedidosStyle.imgPedidoVerde}
+                                                        source={require("@/assets/images/img/pedido.png")}
+                                                    />
+                                                </View>
+                                                <Text style={pedidosStyle.txtNumeroPedidoVerde}>
+                                                    Pedido #{pedido.numero}
+                                                </Text>
+                                            </View>
+                                            <View
+                                                style={[
+                                                    pedidosStyle.badgeEntregue,
+                                                    cancelado && pedidosStyle.badgeCancelado,
+                                                ]}
+                                            >
+                                                {!cancelado && (
+                                                    <Image
+                                                        style={pedidosStyle.imgBadgeEntregue}
+                                                        source={require("@/assets/images/img/entregue-verde.png")}
+                                                    />
+                                                )}
+                                                <Text
+                                                    style={[
+                                                        pedidosStyle.txtBadgeEntregue,
+                                                        cancelado && pedidosStyle.txtBadgeCancelado,
+                                                    ]}
+                                                >
+                                                    {cancelado ? "Cancelado" : "Entregue"}
+                                                </Text>
+                                            </View>
+                                        </View>
+
+                                        <View style={pedidosStyle.listaItens}>
+                                            {pedido.itens.map((item) => (
+                                                <View key={item.id} style={pedidosStyle.linhaItem}>
+                                                    <Image
+                                                        style={pedidosStyle.imgItem}
+                                                        source={item.imagem}
+                                                    />
+                                                    <Text style={pedidosStyle.txtItem}>{item.nome}</Text>
+                                                </View>
+                                            ))}
+                                        </View>
+
+                                        <View style={pedidosStyle.divisorVerde} />
+
+                                        <View style={pedidosStyle.rodapePedidoEntregue}>
+                                            <View>
+                                                <Text style={pedidosStyle.txtLabelTotal}>Total</Text>
+                                                <Text style={pedidosStyle.txtValorTotalVerde}>
+                                                    R$ {pedido.total.toFixed(2).replace(".", ",")}
+                                                </Text>
+                                            </View>
+                                            <View style={pedidosStyle.linhaBotoesEntregue}>
+                                                <Pressable
+                                                    style={pedidosStyle.btnVerDetalhesPeq}
+                                                    onPress={() =>
+                                                router.push({
+                                                    pathname: "/detalhesPedido",
+                                                    params: { id: pedido.numero },
+                                                })
+                                            }
+                                                >
+                                                    <Text style={pedidosStyle.txtVerDetalhesPeq}>
+                                                        Ver detalhes
+                                                    </Text>
+                                                </Pressable>
+                                                <Pressable
+                                                    style={pedidosStyle.btnPedirNovamentePeq}
+                                                    onPress={() => repetirPedido(pedido)}
+                                                    disabled={repetindo !== null}
+                                                >
+                                                    <Text style={pedidosStyle.txtPedirNovamentePeq}>
+                                                        {repetindo === pedido.numero
+                                                            ? "Adicionando..."
+                                                            : "Pedir novamente"}
+                                                    </Text>
+                                                </Pressable>
+                                            </View>
+                                        </View>
+                                    </View>
+                                    );
+                                })}
+                        </View>
+                    </ScrollView>
+
+                    <Pressable
+                        style={pedidosStyle.btnVoltar}
+                        onPress={() => voltar("/home")}
+                    >
+                        <Image
+                            style={pedidosStyle.iconeVoltar}
+                            source={require("@/assets/images/img/voltar.png")}
+                        />
+                    </Pressable>
+
+                    <Footer />
+                </SafeAreaView>
+            </ImageBackground>
+        </View>
+    );
+}

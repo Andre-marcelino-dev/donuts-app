@@ -1,0 +1,490 @@
+import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
+import { useCallback, useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import {
+    Alert,
+    Image,
+    ImageBackground,
+    Linking,
+    Platform,
+    Pressable,
+    Text,
+    TextInput,
+    View,
+    ScrollView,
+} from "react-native";
+
+import globalStyle from "@/styles/globalStyle";
+import pagamentoStyle from "@/styles/pagamentoStyle";
+import Footer from "@/components/footer";
+import { voltar } from "@/utils/navegacao";
+import { useConfiguracoes } from "@/utils/loja";
+
+import { cores } from "@/styles/variaveis";
+import { buscarSacola, ItemSacola } from "@/utils/sacola";
+import { criarPedido } from "@/utils/pedidos";
+import { buscarEnderecoEntrega, EnderecoEntrega } from "@/utils/enderecos";
+import { buscarEntregaCliente, EntregaCliente } from "@/utils/entrega";
+import { calcularDesconto, Cupom, validarCupom } from "@/utils/cupons";
+
+type TipoEntrega = "entrega" | "retirada";
+type FormaPagamento = "pix" | "cartao" | "dinheiro";
+
+const numeroWhatsapp = "5511988161211";
+const rotulosEntrega: Record<TipoEntrega, string> = {
+    entrega: "Entrega",
+    retirada: "Retirada",
+};
+const rotulosPagamento: Record<FormaPagamento, string> = {
+    pix: "Pix",
+    cartao: "Cartão",
+    dinheiro: "Dinheiro",
+};
+
+function formatarPrecoResumo(valor: number) {
+    return `R$ ${valor.toFixed(2).replace(".", ",")}`;
+}
+ 
+export default function PagamentoScreen() {
+    const [tipoEntrega, setTipoEntrega] = useState<TipoEntrega>("entrega");
+    // Taxa e previsão da zona do endereço do cliente (a API cobra o mesmo valor);
+    // enquanto carrega (ou se falhar), as padrão das Configurações da loja
+    const configuracoes = useConfiguracoes();
+    const [entregaCliente, setEntregaCliente] = useState<EntregaCliente | null>(null);
+    const taxaEntrega = entregaCliente?.taxaEntrega ?? configuracoes.taxaEntrega;
+    const previsaoEntrega = entregaCliente?.previsaoEntrega ?? configuracoes.previsaoEntrega;
+    const foraDaArea = entregaCliente?.entregamos === false;
+    const [formaPagamento, setFormaPagamento] = useState<FormaPagamento>(
+        "pix"
+    );
+    const [observacao, setObservacao] = useState("");
+    const [itensPedido, setItensPedido] = useState<ItemSacola[]>([]);
+    const [enderecoEntrega, setEnderecoEntrega] = useState<EnderecoEntrega | null>(null);
+    const [enviando, setEnviando] = useState(false);
+    const [erro, setErro] = useState("");
+    // Cupom aplicado na Sacola (?cupom=CODIGO); é validado de novo aqui
+    const { cupom: codigoCupom } = useLocalSearchParams<{ cupom?: string }>();
+    const [cupom, setCupom] = useState<Cupom | null>(null);
+
+    // Os itens do pedido são os da sacola do cliente logado
+    useFocusEffect(useCallback(() => {
+        async function carregarItens() {
+            try {
+                setItensPedido(await buscarSacola());
+            } catch (e) {
+                console.error("Erro ao carregar a sacola:", e);
+            }
+            try {
+                setEnderecoEntrega(await buscarEnderecoEntrega());
+            } catch (e) {
+                console.error("Erro ao carregar endereço:", e);
+            }
+            // Recarrega ao voltar da tela de endereços (a zona pode ter mudado)
+            try {
+                const entrega = await buscarEntregaCliente();
+                setEntregaCliente(entrega);
+                // Fora da área de entrega, só dá para retirar na loja
+                if (!entrega.entregamos) setTipoEntrega("retirada");
+            } catch (e) {
+                console.error("Erro ao carregar taxa de entrega:", e);
+            }
+            if (codigoCupom) {
+                try {
+                    setCupom(await validarCupom(codigoCupom));
+                } catch {
+                    setCupom(null);
+                    setErro(`O cupom ${codigoCupom} não vale mais. O pedido sairá sem desconto.`);
+                }
+            }
+        }
+
+        carregarItens();
+    }, [codigoCupom]));
+
+    const subtotal = itensPedido.reduce(
+        (soma, item) => soma + item.preco * item.quantidade,
+        0
+    );
+    const valorEntrega = tipoEntrega === "entrega" ? taxaEntrega : 0;
+    // Mesmo cálculo da API: porcentagem sobre os produtos, sem a entrega
+    const desconto = calcularDesconto(subtotal, cupom);
+    const cupomAplicado = cupom?.codigo ?? null;
+    const total = subtotal + valorEntrega - desconto;
+ 
+    async function confirmarPedido() {
+        if (enviando) return;
+        setErro("");
+
+        if (itensPedido.length === 0) {
+            setErro("Sua sacola está vazia.");
+            return;
+        }
+        if (tipoEntrega === "entrega" && !enderecoEntrega) {
+            setErro("Cadastre um endereço de entrega ou escolha Retirada.");
+            return;
+        }
+        if (tipoEntrega === "entrega" && foraDaArea) {
+            setErro("Ainda não entregamos neste endereço. Escolha Retirada ou troque o endereço.");
+            return;
+        }
+
+        // 1. Grava o pedido no banco (a API esvazia a sacola)
+        setEnviando(true);
+        let numeroPedido: number;
+        try {
+            const pedido = await criarPedido({
+                entrega: tipoEntrega === "entrega",
+                forma_pagamento: formaPagamento,
+                observacao: observacao.trim() || undefined,
+                cupom: cupom?.codigo,
+            });
+            numeroPedido = pedido.numero;
+        } catch (e) {
+            setErro(e instanceof Error ? e.message : "Não foi possível fazer o pedido.");
+            setEnviando(false);
+            return;
+        }
+        setEnviando(false);
+
+        // 2. Avisa a loja pelo WhatsApp, como antes, agora com o número do pedido
+        const linhasItens = itensPedido
+            .map((item) => `- ${item.quantidade}x ${item.nome}`)
+            .join("\n");
+ 
+        const linhasEndereco =
+            tipoEntrega === "entrega"
+                ? `\n*Endereço:* ${enderecoEntrega?.texto ?? ""}\n*Telefone:* ${enderecoEntrega?.telefone ?? ""}`
+                : "";
+
+        const linhaObservacao = observacao.trim()
+            ? `\n*Observação:* ${observacao.trim()}`
+            : "";
+
+        const mensagem = `*Novo pedido #${numeroPedido} - Cantinho Donuts*\n\n${linhasItens}\n\n*Entrega/Retirada:* ${rotulosEntrega[tipoEntrega]}${linhasEndereco}\n*Forma de pagamento:* ${rotulosPagamento[formaPagamento]}${linhaObservacao}\n\n*Subtotal:* ${formatarPrecoResumo(
+            subtotal
+        )}\n*Entrega:* ${formatarPrecoResumo(
+            valorEntrega
+        )}${
+            cupom ? `\n*Desconto (${cupom.codigo}):* -${formatarPrecoResumo(desconto)}` : ""
+        }\n*Total:* ${formatarPrecoResumo(total)}`;
+ 
+        const textoCodificado = encodeURIComponent(mensagem);
+        const urlApp = `whatsapp://send?phone=${numeroWhatsapp}&text=${textoCodificado}`;
+        const urlWeb = `https://wa.me/${numeroWhatsapp}?text=${textoCodificado}`;
+ 
+        let whatsappAberto = false;
+        if (Platform.OS !== "web") {
+            try {
+                await Linking.openURL(urlApp);
+                whatsappAberto = true;
+            } catch {
+                // WhatsApp não instalado, segue para o link web
+            }
+        }
+ 
+        if (!whatsappAberto) {
+            try {
+                await Linking.openURL(urlWeb);
+            } catch {
+                Alert.alert(
+                    "WhatsApp não encontrado",
+                    "Seu pedido foi feito, mas não foi possível abrir o WhatsApp."
+                );
+            }
+        }
+
+        // 3. Mostra o pedido que acabou de ser criado
+        router.replace({
+            pathname: "/detalhesPedido",
+            params: { id: numeroPedido },
+        });
+    }
+    return (
+        <View style={globalStyle.container}>
+            <ImageBackground
+                source={require("@/assets/images/img/00_fundo.png")}
+                style={globalStyle.background}
+                resizeMode="stretch"
+            >
+                <SafeAreaView style={globalStyle.areaConteudo}>
+                    <ScrollView style={globalStyle.scrollConteudo}>
+                        <View style={pagamentoStyle.header}>
+                            <View style={pagamentoStyle.conteudo}>
+                                <Image
+                                    style={pagamentoStyle.logo}
+                                    source={require("@/assets/images/img/logo.png")}
+                                />
+                            </View>
+                            <Text style={pagamentoStyle.titulo}>Pagamento</Text>
+                            <Text style={pagamentoStyle.subtitulo}>
+                                Confirme a entrega e forma de pagamento
+                            </Text>
+                        </View>
+
+                        <View style={pagamentoStyle.main}>
+                            <View style={pagamentoStyle.card}>
+                                <View style={pagamentoStyle.linhaTopoCard}>
+                                    <View style={pagamentoStyle.linhaObservacao}>
+                                        <Image
+                                            style={pagamentoStyle.iconeEndereco}
+                                            source={require("@/assets/images/img/local.png")}
+                                        />
+                                        <Text style={pagamentoStyle.labelCard}>
+                                            Endereço de entrega:
+                                        </Text>
+                                    </View>
+                                    <Pressable
+                                        onPress={() => router.push("/enderecos")}
+                                    >
+                                        <Text style={pagamentoStyle.txtAlterar}>Alterar &gt;</Text>
+                                    </Pressable>
+                                </View>
+                                <Text style={pagamentoStyle.txtEnderecoTitulo}>
+                                    {enderecoEntrega?.nome ?? "Sem endereço"}
+                                </Text>
+                                <Text style={pagamentoStyle.txtEndereco}>
+                                    {enderecoEntrega?.texto ??
+                                        "Toque em Alterar para cadastrar um endereço."}
+                                </Text>
+                                {foraDaArea && (
+                                    <Text style={pagamentoStyle.txtAvisoEntrega}>
+                                        Ainda não entregamos neste endereço. Você pode retirar o
+                                        pedido na loja ou trocar o endereço.
+                                    </Text>
+                                )}
+                            </View>
+
+                            <View style={pagamentoStyle.card}>
+                                <View style={pagamentoStyle.linhaEntregaRetirada}>
+                                    <View style={pagamentoStyle.segmentado}>
+                                        <Pressable
+                                            style={[
+                                                pagamentoStyle.segmentoItem,
+                                                tipoEntrega === "entrega" &&
+                                                    pagamentoStyle.segmentoItemAtivo,
+                                            ]}
+                                            onPress={() => {
+                                                if (foraDaArea) {
+                                                    setErro("Ainda não entregamos neste endereço. Escolha Retirada ou troque o endereço.");
+                                                    return;
+                                                }
+                                                setTipoEntrega("entrega");
+                                            }}
+                                        >
+                                            <Text
+                                                style={[
+                                                    pagamentoStyle.txtSegmento,
+                                                    tipoEntrega === "entrega" &&
+                                                        pagamentoStyle.txtSegmentoAtivo,
+                                                ]}
+                                            >
+                                                Entrega
+                                            </Text>
+                                        </Pressable>
+                                        <Pressable
+                                            style={[
+                                                pagamentoStyle.segmentoItem,
+                                                tipoEntrega === "retirada" &&
+                                                    pagamentoStyle.segmentoItemAtivo,
+                                            ]}
+                                            onPress={() => setTipoEntrega("retirada")}
+                                        >
+                                            <Text
+                                                style={[
+                                                    pagamentoStyle.txtSegmento,
+                                                    tipoEntrega === "retirada" &&
+                                                        pagamentoStyle.txtSegmentoAtivo,
+                                                ]}
+                                            >
+                                                Retirada
+                                            </Text>
+                                        </Pressable>
+                                    </View>
+                                    <View style={pagamentoStyle.previsao}>
+                                        <Text style={pagamentoStyle.txtPrevisaoValor}>
+                                            {previsaoEntrega}
+                                        </Text>
+                                        <Text style={pagamentoStyle.txtPrevisaoLabel}>
+                                            Previsto
+                                        </Text>
+                                    </View>
+                                </View>
+                            </View>
+
+                            <View style={pagamentoStyle.card}>
+                                <View style={pagamentoStyle.linhaObservacao}>
+                                    <Image
+                                        style={pagamentoStyle.iconeCarteira}
+                                        source={require("@/assets/images/img/carteira.png")}
+                                    />
+                                    <Text style={pagamentoStyle.labelCard}>Forma de Pagamento</Text>
+                                </View>
+                                <View style={pagamentoStyle.segmentado3}>
+                                    <Pressable
+                                        style={[
+                                            pagamentoStyle.segmentoItem3,
+                                            formaPagamento === "pix" &&
+                                                pagamentoStyle.segmentoItemAtivo,
+                                        ]}
+                                        onPress={() => setFormaPagamento("pix")}
+                                    >
+                                        <Text
+                                            style={[
+                                                pagamentoStyle.txtSegmento,
+                                                formaPagamento === "pix" &&
+                                                    pagamentoStyle.txtSegmentoAtivo,
+                                            ]}
+                                        >
+                                            Pix
+                                        </Text>
+                                    </Pressable>
+                                    <Pressable
+                                        style={[
+                                            pagamentoStyle.segmentoItem3,
+                                            formaPagamento === "cartao" &&
+                                                pagamentoStyle.segmentoItemAtivo,
+                                        ]}
+                                        onPress={() => setFormaPagamento("cartao")}
+                                    >
+                                        <Text
+                                            style={[
+                                                pagamentoStyle.txtSegmento,
+                                                formaPagamento === "cartao" &&
+                                                    pagamentoStyle.txtSegmentoAtivo,
+                                            ]}
+                                        >
+                                            Cartão
+                                        </Text>
+                                    </Pressable>
+                                    <Pressable
+                                        style={[
+                                            pagamentoStyle.segmentoItem3,
+                                            formaPagamento === "dinheiro" &&
+                                                pagamentoStyle.segmentoItemAtivo,
+                                        ]}
+                                        onPress={() => setFormaPagamento("dinheiro")}
+                                    >
+                                        <Text
+                                            style={[
+                                                pagamentoStyle.txtSegmento,
+                                                formaPagamento === "dinheiro" &&
+                                                    pagamentoStyle.txtSegmentoAtivo,
+                                            ]}
+                                        >
+                                            Dinheiro
+                                        </Text>
+                                    </Pressable>
+                                </View>
+                            </View>
+
+                            <View style={pagamentoStyle.card}>
+                                <View style={pagamentoStyle.linhaObservacao}>
+                                    <Image
+                                        style={pagamentoStyle.iconeObservacao}
+                                        source={require("@/assets/images/img/mensagem.png")}
+                                    />
+                                    <Text style={pagamentoStyle.labelCard}>Observação</Text>
+                                </View>
+                                <TextInput
+                                    style={pagamentoStyle.inputObservacao}
+                                    placeholder="Alguma Observação para seu pedido"
+                                    placeholderTextColor={cores.cinzclaro}
+                                    value={observacao}
+                                    onChangeText={setObservacao}
+                                    multiline
+                                />
+                            </View>
+
+                            <View style={pagamentoStyle.card}>
+                                <View style={pagamentoStyle.linhaObservacao}>
+                                    <Image
+                                        style={pagamentoStyle.iconeResumo}
+                                        source={require("@/assets/images/img/documento.png")}
+                                    />
+                                    <Text style={pagamentoStyle.labelCard}>Resumo do Pedido</Text>
+                                </View>
+
+                                {itensPedido.map((item) => (
+                                    <View key={item.id} style={pagamentoStyle.itemResumo}>
+                                        <View style={pagamentoStyle.linhaItemResumo}>
+                                            <Image
+                                                style={pagamentoStyle.imgItemResumo}
+                                                source={item.imagem}
+                                            />
+                                            <Text style={pagamentoStyle.txtItemResumo}>
+                                                {item.quantidade}x {item.nome}
+                                            </Text>
+                                        </View>
+                                        <Text style={pagamentoStyle.txtValorItemResumo}>
+                                            {formatarPrecoResumo(item.preco * item.quantidade)}
+                                        </Text>
+                                    </View>
+                                ))}
+
+                                <View style={pagamentoStyle.divisor} />
+
+                                <View style={pagamentoStyle.linhaResumo}>
+                                    <Text style={pagamentoStyle.txtLabelResumo}>Subtotal</Text>
+                                    <Text style={pagamentoStyle.txtValorResumo}>
+                                        {formatarPrecoResumo(subtotal)}
+                                    </Text>
+                                </View>
+                                <View style={pagamentoStyle.linhaResumo}>
+                                    <Text style={pagamentoStyle.txtLabelResumo}>Entrega</Text>
+                                    <Text style={pagamentoStyle.txtValorResumo}>
+                                        {formatarPrecoResumo(valorEntrega)}
+                                    </Text>
+                                </View>
+                                {cupomAplicado && (
+                                    <View style={pagamentoStyle.linhaResumo}>
+                                        <Text style={pagamentoStyle.txtLabelDesconto}>
+                                            Desconto
+                                        </Text>
+                                        <Text style={pagamentoStyle.txtCodigoCupom}>
+                                            {cupomAplicado}
+                                        </Text>
+                                        <Text style={pagamentoStyle.txtValorDesconto}>
+                                            {formatarPrecoResumo(desconto)}
+                                        </Text>
+                                    </View>
+                                )}
+                                <View style={pagamentoStyle.divisor} />
+                                <View style={pagamentoStyle.linhaResumo}>
+                                    <Text style={pagamentoStyle.txtLabelTotal}>TOTAL</Text>
+                                    <Text style={pagamentoStyle.txtValorTotal}>
+                                        {formatarPrecoResumo(total)}
+                                    </Text>
+                                </View>
+                            </View>
+                        </View>
+
+                        {erro !== "" && <Text style={pagamentoStyle.txtErro}>{erro}</Text>}
+
+                        <Pressable
+                            style={pagamentoStyle.btnConfirmar}
+                            onPress={confirmarPedido}
+                            disabled={enviando}
+                        >
+                            <Text style={pagamentoStyle.txtConfirmar}>
+                                {enviando ? "Enviando pedido..." : "Confirma Pedido"}
+                            </Text>
+                        </Pressable>
+                    </ScrollView>
+
+                    <Pressable
+                        style={pagamentoStyle.btnVoltar}
+                        onPress={() => voltar("/sacola")}
+                    >
+                        <Image
+                            style={pagamentoStyle.iconeVoltar}
+                            source={require("@/assets/images/img/voltar.png")}
+                        />
+                    </Pressable>
+
+                    <Footer />
+                </SafeAreaView>
+            </ImageBackground>
+        </View>
+    );
+}

@@ -1,0 +1,203 @@
+import { Platform } from "react-native";
+import * as SecureStore from "expo-secure-store";
+
+import { API_BASE_URL } from "@/utils/categorias";
+
+const CHAVE_TOKEN = "token_cliente";
+const CHAVE_CLIENTE = "dados_cliente";
+
+export type Cliente = {
+    id_cliente: number;
+    nome_cliente: string;
+    email_cliente: string;
+    telefone_cliente: string;
+    foto_cliente?: string | null;
+    cpf_cnpj_cliente?: string;
+    data_nasc_cliente?: string;
+    endereco_cliente?: string;
+    numero_cliente?: string;
+    bairro_cliente?: string;
+    cidade_cliente?: string;
+    uf_cliente?: string;
+    novidades_cliente?: "SIM" | "NAO";
+};
+
+export type DadosPerfil = {
+    nome_cliente: string;
+    telefone_cliente: string;
+    data_nasc_cliente: string; // aaaa-mm-dd
+    novidades_cliente: "SIM" | "NAO"; // aceita receber novidades e promoções
+};
+
+// O SecureStore não funciona na web, então lá usamos o localStorage.
+async function salvar(chave: string, valor: string) {
+    if (Platform.OS === "web") localStorage.setItem(chave, valor);
+    else await SecureStore.setItemAsync(chave, valor);
+}
+
+async function ler(chave: string) {
+    if (Platform.OS === "web") return localStorage.getItem(chave);
+    return SecureStore.getItemAsync(chave);
+}
+
+async function apagar(chave: string) {
+    if (Platform.OS === "web") localStorage.removeItem(chave);
+    else await SecureStore.deleteItemAsync(chave);
+}
+
+// Faz o login na API e guarda o token e os dados do cliente no aparelho.
+// Se der errado, lança um erro com a mensagem da API para mostrar na tela.
+export async function fazerLogin(email: string, senha: string): Promise<Cliente> {
+    const resposta = await fetch(`${API_BASE_URL}/api/v1/auth/login`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, senha, device_name: `app-${Platform.OS}` }),
+    });
+
+    const json = await resposta.json().catch(() => null);
+
+    if (!resposta.ok || !json?.success) {
+        throw new Error(json?.message ?? `Erro ${resposta.status} ao fazer login.`);
+    }
+
+    await salvar(CHAVE_TOKEN, json.data.token);
+    await salvar(CHAVE_CLIENTE, JSON.stringify(json.data.cliente));
+    return json.data.cliente;
+}
+
+export async function pegarToken() {
+    return ler(CHAVE_TOKEN);
+}
+
+export async function pegarCliente(): Promise<Cliente | null> {
+    const dados = await ler(CHAVE_CLIENTE);
+    return dados ? JSON.parse(dados) : null;
+}
+
+// Busca na API o cadastro completo de quem está logado (inclui a foto).
+// Retorna null se não houver login ou se o token não valer mais.
+export async function buscarClienteLogado(): Promise<Cliente | null> {
+    const token = await pegarToken();
+    if (!token) return null;
+
+    const resposta = await fetch(`${API_BASE_URL}/api/v1/cliente`, {
+        headers: { Accept: "application/json", Authorization: `Bearer ${token}` },
+    });
+    if (!resposta.ok) return null;
+
+    const json = await resposta.json();
+    await salvar(CHAVE_CLIENTE, JSON.stringify(json.data));
+    return json.data;
+}
+
+// Salva na API os dados do perfil de quem está logado.
+// Se der errado, lança um erro com a mensagem da API para mostrar na tela.
+export async function atualizarCliente(dados: DadosPerfil): Promise<Cliente> {
+    const token = await pegarToken();
+    if (!token) throw new Error("Faça login novamente.");
+
+    const resposta = await fetch(`${API_BASE_URL}/api/v1/cliente`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(dados),
+    });
+
+    const json = await resposta.json().catch(() => null);
+    if (!resposta.ok || !json?.success) {
+        throw new Error(json?.message ?? `Erro ${resposta.status} ao salvar o perfil.`);
+    }
+
+    await salvar(CHAVE_CLIENTE, JSON.stringify(json.data));
+    return json.data;
+}
+
+type FotoEscolhida = {
+    uri: string;
+    mimeType?: string | null;
+    fileName?: string | null;
+    file?: File;
+};
+
+// Envia para a API a foto escolhida na galeria e devolve o cliente atualizado.
+export async function enviarFotoCliente(foto: FotoEscolhida): Promise<Cliente> {
+    const token = await pegarToken();
+    if (!token) throw new Error("Faça login novamente.");
+
+    const formulario = new FormData();
+    if (Platform.OS === "web" && foto.file) {
+        formulario.append("foto", foto.file);
+    } else {
+        // No celular o React Native envia o arquivo a partir do uri
+        formulario.append("foto", {
+            uri: foto.uri,
+            name: foto.fileName ?? "foto.jpg",
+            type: foto.mimeType ?? "image/jpeg",
+        } as any);
+    }
+
+    const resposta = await fetch(`${API_BASE_URL}/api/v1/cliente/foto`, {
+        method: "POST",
+        headers: { Accept: "application/json", Authorization: `Bearer ${token}` },
+        body: formulario,
+    });
+
+    const json = await resposta.json().catch(() => null);
+    if (!resposta.ok || !json?.success) {
+        throw new Error(json?.message ?? `Erro ${resposta.status} ao enviar a foto.`);
+    }
+
+    await salvar(CHAVE_CLIENTE, JSON.stringify(json.data));
+    return json.data;
+}
+
+// Troca a senha do cliente logado. A API confere a senha atual.
+// Se der errado, lança um erro com a mensagem da API para mostrar na tela.
+export async function alterarSenha(senhaAtual: string, novaSenha: string, confirmacao: string) {
+    const token = await pegarToken();
+    if (!token) throw new Error("Faça login novamente.");
+
+    const resposta = await fetch(`${API_BASE_URL}/api/v1/cliente/senha`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+            senha_atual: senhaAtual,
+            nova_senha: novaSenha,
+            nova_senha_confirmation: confirmacao,
+        }),
+    });
+
+    const json = await resposta.json().catch(() => null);
+    if (!resposta.ok || !json?.success) {
+        throw new Error(json?.message ?? `Erro ${resposta.status} ao trocar a senha.`);
+    }
+}
+
+// Endereço da foto do cliente (as fotos ficam em donuts/images/cliente).
+export function urlFotoCliente(cliente: Cliente | null) {
+    if (!cliente?.foto_cliente) return null;
+    return `${API_BASE_URL}/donuts/images/cliente/${encodeURIComponent(cliente.foto_cliente)}`;
+}
+
+// Apaga o token na API e no aparelho.
+export async function fazerLogout() {
+    const token = await pegarToken();
+    if (token) {
+        await fetch(`${API_BASE_URL}/api/v1/auth/logout`, {
+            method: "POST",
+            headers: { Accept: "application/json", Authorization: `Bearer ${token}` },
+        }).catch(() => {});
+    }
+    await apagar(CHAVE_TOKEN);
+    await apagar(CHAVE_CLIENTE);
+}
