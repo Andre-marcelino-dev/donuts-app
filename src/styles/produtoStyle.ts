@@ -82,7 +82,7 @@ const produtoStyle = StyleSheet.create({
     titulo: {
         flex: 1,
         fontSize: fontes.fontgrande,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         color: cores.chocolate,
         textAlign: 'center',
         marginHorizontal: 10,
@@ -111,7 +111,7 @@ const produtoStyle = StyleSheet.create({
 
     tituloSecao: {
         fontSize: fontes.fontgrande,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         color: cores.chocolate,
         marginTop: 25,
         marginBottom: 10,

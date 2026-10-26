@@ -48,7 +48,7 @@ const pagamentoStyle = StyleSheet.create({
         color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
     },
 
     subtitulo: {
@@ -108,7 +108,7 @@ const pagamentoStyle = StyleSheet.create({
 
     txtEnderecoTitulo: {
         fontSize: fontes.fontmedia,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         color: cores.chocolate,
         marginTop: 8,
     },

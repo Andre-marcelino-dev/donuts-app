@@ -48,7 +48,7 @@ const depoimentosStyle = StyleSheet.create({
         color: cores.rosa,
         textAlign: 'left',
         marginTop: 15,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         textDecorationLine: 'underline',
     },
 
@@ -76,7 +76,7 @@ const depoimentosStyle = StyleSheet.create({
 
     tituloCardNovo: {
         fontSize: fontes.fontgrande,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         color: cores.chocolate,
         marginBottom: 16,
     },
@@ -134,7 +134,7 @@ const depoimentosStyle = StyleSheet.create({
     tituloSecao: {
         fontSize: fontes.fontxg,
         color: cores.rosa,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         marginBottom: 16,
     },
 

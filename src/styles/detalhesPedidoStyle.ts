@@ -48,7 +48,7 @@ const detalhesPedidoStyle = StyleSheet.create({
         color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
     },
 
     subtitulo: {

@@ -48,7 +48,7 @@ const configuracoesStyle = StyleSheet.create({
         color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
     },
 
     subtitulo: {
@@ -117,7 +117,7 @@ const configuracoesStyle = StyleSheet.create({
 
     tituloSecao: {
         fontSize: fontes.fontmedia,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         color: cores.chocolate,
         marginBottom: 12,
     },
@@ -156,7 +156,7 @@ const configuracoesStyle = StyleSheet.create({
 
     tituloItem: {
         fontSize: 14,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         color: cores.chocolate,
     },
 
@@ -240,7 +240,7 @@ const configuracoesStyle = StyleSheet.create({
 
     modalTitulo: {
         fontSize: fontes.fontgrande,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         color: cores.chocolate,
     },
 

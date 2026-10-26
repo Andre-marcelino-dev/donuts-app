@@ -48,7 +48,7 @@ const faleConoscoStyle = StyleSheet.create({
         color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
     },
 
     subtitulo: {
@@ -152,7 +152,7 @@ const faleConoscoStyle = StyleSheet.create({
 
     tituloAtendimento: {
         fontSize: fontes.fontgrande,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         color: cores.rosa,
         marginBottom: 12,
     },

@@ -18,7 +18,7 @@ const redefinirSenhaStyle = StyleSheet.create({
     fontWeight: "bold",
     color: cores.chocolate,
     textAlign: "center",
-    fontFamily:'Oswald_700Bold',
+    fontFamily:fontes.titulo,
   },
 
   subtitulo: {

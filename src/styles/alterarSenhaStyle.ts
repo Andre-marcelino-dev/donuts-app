@@ -48,7 +48,7 @@ const alterarSenhaStyle = StyleSheet.create({
         color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
     },
 
     subtitulo: {
@@ -138,7 +138,7 @@ const alterarSenhaStyle = StyleSheet.create({
 
     tituloDicas: {
         fontSize: 14,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         color: cores.chocolate,
         marginBottom: 6,
     },

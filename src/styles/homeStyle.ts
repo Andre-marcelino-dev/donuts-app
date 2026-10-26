@@ -23,7 +23,7 @@ const homeStyle = StyleSheet.create({
         fontWeight: "bold",
         color: cores.chocolate,
         textAlign: "center",
-        fontFamily: fontes.negrito
+        fontFamily: fontes.titulo
     },
     bordaPerfil: {
         padding: 15,
@@ -99,7 +99,7 @@ tituloCategoria:{
         fontWeight: "bold",
         color: cores.chocolate,
         
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         margin:20,
 },
 
@@ -117,7 +117,7 @@ conteudoCategoria:{
 tituloSecao:{
     fontSize:30,
     color:cores.chocolate,
-    fontFamily:fontes.negrito,
+    fontFamily:fontes.titulo,
     marginBottom:10,
 },
 

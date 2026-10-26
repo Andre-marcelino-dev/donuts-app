@@ -2,10 +2,12 @@ import { SplashScreen, Stack } from "expo-router";
 
 import { useFonts} from 'expo-font';
 
-import { Oswald_400Regular, Oswald_700Bold}from '@expo-google-fonts/oswald';
+import { Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
+import { PlayfairDisplay_700Bold } from '@expo-google-fonts/playfair-display';
 import { useEffect } from "react";
 
-export const fontesCarregar={Oswald_400Regular, Oswald_700Bold}
+// Mesmas fontes do site: Poppins nos textos e Playfair Display nos títulos
+export const fontesCarregar={Poppins_400Regular, Poppins_600SemiBold, PlayfairDisplay_700Bold}
 
 export default function RootLayout (){
   const [fontsLoader]= useFonts(fontesCarregar);

@@ -15,8 +15,9 @@ export const cores = {
 
 
 export const fontes = {
-    comum: "Oswald_400Regular",
-    negrito: "Oswald_700Bold",
+    comum: "Poppins_400Regular",
+    negrito: "Poppins_600SemiBold",
+    titulo: "PlayfairDisplay_700Bold",
     fontpeq: 12,
     fontmedia: 15,
     fontgrande: 20,

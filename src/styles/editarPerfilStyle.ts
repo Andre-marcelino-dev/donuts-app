@@ -48,7 +48,7 @@ const editarPerfilStyle = StyleSheet.create({
         color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
     },
 
     subtitulo: {
@@ -200,7 +200,7 @@ const editarPerfilStyle = StyleSheet.create({
 
     tituloNotificacao: {
         fontSize: 14,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         color: cores.chocolate,
     },
 
@@ -292,7 +292,7 @@ const editarPerfilStyle = StyleSheet.create({
 
     modalTitulo: {
         fontSize: fontes.fontgrande,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         color: cores.chocolate,
     },
 
@@ -341,7 +341,7 @@ const editarPerfilStyle = StyleSheet.create({
 
     tituloOpcaoFoto: {
         fontSize: fontes.fontmedia,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         color: cores.chocolate,
     },
 

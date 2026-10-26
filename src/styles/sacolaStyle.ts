@@ -49,7 +49,7 @@ const sacolaStyle = StyleSheet.create({
         color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
     },
 
     subtitulo: {
@@ -66,7 +66,7 @@ const sacolaStyle = StyleSheet.create({
 
     tituloSecao: {
         fontSize: fontes.fontgrande,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         color: cores.chocolate,
         marginBottom: 12,
     },
@@ -205,7 +205,7 @@ const sacolaStyle = StyleSheet.create({
 
     tituloCupom: {
         fontSize: fontes.fontmedia,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         color: cores.chocolate,
         marginBottom: 10,
     },

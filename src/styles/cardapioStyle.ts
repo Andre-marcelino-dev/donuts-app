@@ -48,7 +48,7 @@ const cardapioStyle = StyleSheet.create({
         color: cores.chocolate,
         textAlign: "left",
         marginTop: 15,
-        fontFamily: fontes.negrito
+        fontFamily: fontes.titulo
     },
     
     
@@ -105,7 +105,7 @@ const cardapioStyle = StyleSheet.create({
         fontWeight: "bold",
         color: cores.chocolate,
         
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
         margin: 20,
     },
     
@@ -126,7 +126,7 @@ const cardapioStyle = StyleSheet.create({
     tituloSecao: {
         fontSize: 30,
         color: cores.chocolate,
-        fontFamily: fontes.negrito,
+        fontFamily: fontes.titulo,
 
     },
 
