@@ -27,7 +27,7 @@ const sacolaStyle = StyleSheet.create({
         width: 42,
         height: 42,
         borderRadius: "50%",
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -46,7 +46,7 @@ const sacolaStyle = StyleSheet.create({
 
     titulo: {
         fontSize: 30,
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
         fontFamily: fontes.negrito,
@@ -55,7 +55,7 @@ const sacolaStyle = StyleSheet.create({
     subtitulo: {
         marginTop: 10,
         fontSize: 15,
-        color: cores.cinzclaro,
+        color: cores.cinza,
     },
 
     main: {
@@ -67,7 +67,7 @@ const sacolaStyle = StyleSheet.create({
     tituloSecao: {
         fontSize: fontes.fontgrande,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
         marginBottom: 12,
     },
 
@@ -78,7 +78,7 @@ const sacolaStyle = StyleSheet.create({
         borderRadius: 15,
         padding: 10,
         marginBottom: 15,
-        shadowColor: cores.preto,
+        shadowColor: cores.chocolate,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 4,
@@ -112,13 +112,13 @@ const sacolaStyle = StyleSheet.create({
     nomeItem: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     descricaoItem: {
         fontSize: 15,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginTop: 2,
         width: '100%',
     },
@@ -130,7 +130,7 @@ const sacolaStyle = StyleSheet.create({
     imgLixeira: {
         width: 18,
         height: 18,
-        tintColor: cores.cinzclaro,
+        tintColor: cores.cinza,
     },
 
     rodapeItem: {
@@ -149,21 +149,21 @@ const sacolaStyle = StyleSheet.create({
     precoUnitario: {
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginRight: 10,
     },
 
     precoItem: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     quantidade: {
         flexDirection: 'row',
         alignItems: 'center',
         flexShrink: 0,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 8,
     },
@@ -178,13 +178,13 @@ const sacolaStyle = StyleSheet.create({
     txtBtnQuantidade: {
         fontSize: 14,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     txtQuantidade: {
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         minWidth: 16,
         textAlign: 'center',
     },
@@ -195,7 +195,7 @@ const sacolaStyle = StyleSheet.create({
         borderRadius: 15,
         padding: 15,
         marginBottom: 20,
-        shadowColor: cores.preto,
+        shadowColor: cores.chocolate,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 4,
@@ -206,7 +206,7 @@ const sacolaStyle = StyleSheet.create({
     tituloCupom: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
         marginBottom: 10,
     },
 
@@ -217,18 +217,18 @@ const sacolaStyle = StyleSheet.create({
 
     inputCupom: {
         flex: 1,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 10,
         height: 42,
         paddingHorizontal: 12,
         fontSize: 13,
-        color: cores.preto,
+        color: cores.chocolate,
         fontFamily: fontes.comum,
     },
 
     btnCupom: {
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         borderRadius: 10,
         height: 42,
         paddingHorizontal: 16,
@@ -260,7 +260,7 @@ const sacolaStyle = StyleSheet.create({
     cardEntrega: {
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         padding: 15,
@@ -270,7 +270,7 @@ const sacolaStyle = StyleSheet.create({
     cardResumo: {
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         padding: 15,
@@ -280,7 +280,7 @@ const sacolaStyle = StyleSheet.create({
     labelEntregaEm: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     linhaEndereco: {
@@ -294,14 +294,14 @@ const sacolaStyle = StyleSheet.create({
         flex: 1,
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
         marginBottom:5,
     },
 
     txtTelefone: {
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     
         marginLeft: 56,
     },
@@ -331,28 +331,28 @@ const sacolaStyle = StyleSheet.create({
     txtPrevisaoLabel: {
         fontSize: 11,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
     },
 
     txtPrevisaoValor: {
         flex: 1,
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: 'center',
     },
 
     txtTrocarEndereco: {
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
         textDecorationLine: 'underline',
     },
 
     divisor: {
         width: '100%',
         height: 2,
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         marginVertical: 5,
     },
 
@@ -366,7 +366,7 @@ const sacolaStyle = StyleSheet.create({
     txtLabelResumo: {
         fontSize: 14,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     txtLabelDesconto: {
@@ -386,7 +386,7 @@ const sacolaStyle = StyleSheet.create({
     txtValorResumo: {
         fontSize: 14,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     txtValorDesconto: {
@@ -398,20 +398,20 @@ const sacolaStyle = StyleSheet.create({
     txtLabelTotal: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     txtValorTotal: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
    
     },
 
     btnFinalizar: {
         width: '80%',
         alignSelf: 'center',
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         borderRadius: 15,
         paddingVertical: 16,
         alignItems: 'center',
@@ -421,7 +421,7 @@ const sacolaStyle = StyleSheet.create({
     txtFinalizar: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
 });

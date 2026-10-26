@@ -26,7 +26,7 @@ const depoimentosStyle = StyleSheet.create({
         width: 42,
         height: 42,
         borderRadius: "50%",
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -45,7 +45,7 @@ const depoimentosStyle = StyleSheet.create({
 
     titulo: {
         fontSize: 30,
-        color: cores.laranja,
+        color: cores.rosa,
         textAlign: 'left',
         marginTop: 15,
         fontFamily: fontes.negrito,
@@ -55,7 +55,7 @@ const depoimentosStyle = StyleSheet.create({
     subtitulo: {
         marginTop: 10,
         fontSize: 15,
-        color: cores.cinzclaro,
+        color: cores.cinza,
     },
 
     main: {
@@ -67,7 +67,7 @@ const depoimentosStyle = StyleSheet.create({
     cardNovo: {
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         padding: 18,
@@ -77,14 +77,14 @@ const depoimentosStyle = StyleSheet.create({
     tituloCardNovo: {
         fontSize: fontes.fontgrande,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
         marginBottom: 16,
     },
 
     labelCampo: {
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
         marginBottom: 8,
     },
 
@@ -95,31 +95,31 @@ const depoimentosStyle = StyleSheet.create({
 
     estrela: {
         fontSize: 26,
-        color: cores.laranja,
+        color: cores.rosa,
         marginRight: 6,
     },
 
     estrelaVazia: {
-        color: cores.laranjaclaro,
+        color: cores.rosaClaro,
     },
 
     inputDepoimento: {
         width: '100%',
         minHeight: 90,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 12,
         padding: 12,
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.preto,
+        color: cores.chocolate,
         textAlignVertical: 'top',
         marginBottom: 18,
     },
 
     btnEnviar: {
         width: '100%',
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         borderRadius: 15,
         paddingVertical: 16,
         alignItems: 'center',
@@ -133,7 +133,7 @@ const depoimentosStyle = StyleSheet.create({
 
     tituloSecao: {
         fontSize: fontes.fontxg,
-        color: cores.laranja,
+        color: cores.rosa,
         fontFamily: fontes.negrito,
         marginBottom: 16,
     },
@@ -141,7 +141,7 @@ const depoimentosStyle = StyleSheet.create({
     card: {
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         padding: 15,
@@ -155,14 +155,14 @@ const depoimentosStyle = StyleSheet.create({
 
     estrelaCard: {
         fontSize: 18,
-        color: cores.laranja,
+        color: cores.rosa,
         marginRight: 4,
     },
 
     txtAvaliacao: {
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.preto,
+        color: cores.chocolate,
         lineHeight: 18,
     },
 
@@ -183,7 +183,7 @@ const depoimentosStyle = StyleSheet.create({
     txtVazio: {
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         textAlign: "center",
         marginBottom: 20,
     },
@@ -210,7 +210,7 @@ const depoimentosStyle = StyleSheet.create({
     txtData: {
         fontSize: 11,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginTop: 8,
     },
 

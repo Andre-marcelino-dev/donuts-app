@@ -26,7 +26,7 @@ const editarEnderecoStyle = StyleSheet.create({
         width: 42,
         height: 42,
         borderRadius: "50%",
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -45,7 +45,7 @@ const editarEnderecoStyle = StyleSheet.create({
 
     titulo: {
         fontSize: 30,
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
         fontFamily: fontes.negrito,
@@ -54,7 +54,7 @@ const editarEnderecoStyle = StyleSheet.create({
     subtitulo: {
         marginTop: 10,
         fontSize: 15,
-        color: cores.cinzclaro,
+        color: cores.cinza,
     },
 
     main: {
@@ -66,7 +66,7 @@ const editarEnderecoStyle = StyleSheet.create({
     form: {
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         padding: 18,
@@ -87,30 +87,30 @@ const editarEnderecoStyle = StyleSheet.create({
     iconeCampo: {
         width: 16,
         height: 16,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
         marginRight: 8,
     },
 
     labelCampo: {
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     inputCampo: {
         width: '100%',
-        borderBottomColor: cores.laranjaclaro,
+        borderBottomColor: cores.rosaClaro,
         borderBottomWidth: 2,
         paddingBottom: 8,
         paddingLeft: 24,
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     btnSalvar: {
         width: '100%',
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         borderRadius: 15,
         paddingVertical: 16,
         alignItems: 'center',
@@ -125,7 +125,7 @@ const editarEnderecoStyle = StyleSheet.create({
 
     btnCancelar: {
         width: '100%',
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         paddingVertical: 16,
@@ -136,7 +136,7 @@ const editarEnderecoStyle = StyleSheet.create({
     txtCancelar: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     txtErro: {

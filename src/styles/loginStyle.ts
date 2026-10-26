@@ -35,7 +35,7 @@ const LoginStyle = StyleSheet.create({
   input: {
     height: 50,
     flexDirection: "row",
-    borderColor: "#ff9800",
+    borderColor: "#e07a85",
     borderWidth: 2,
     borderRadius: 10,
     padding: 10,
@@ -70,14 +70,14 @@ const LoginStyle = StyleSheet.create({
 
   txtEsqueciSenha: {
     fontSize: 12,
-    color: "#ff9800",
+    color: "#e07a85",
     textDecorationLine: "underline",
   },
 
   btnEntrar: {
     width: "80%",
     height: 50,
-    backgroundColor: "#ff9800",
+    backgroundColor: "#e07a85",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
@@ -105,7 +105,7 @@ const LoginStyle = StyleSheet.create({
   linha: {
     flex: 1,
     height: 2,
-    backgroundColor: "#ff9800",
+    backgroundColor: "#e07a85",
   },
 
   textoSeparador: {
@@ -116,11 +116,11 @@ const LoginStyle = StyleSheet.create({
   btnCriarConta: {
     width: "80%",
     height: 50,
-    backgroundColor: "#FFE8C5",
+    backgroundColor: "#fbede6",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
-    borderColor: "#ff9800",
+    borderColor: "#e07a85",
     borderWidth: 2,
   },
 
@@ -131,7 +131,7 @@ const LoginStyle = StyleSheet.create({
   },
 
   btnCriarContaPressed: {
-    backgroundColor: "#ff9800",
+    backgroundColor: "#e07a85",
   },
 
   txtErro: {

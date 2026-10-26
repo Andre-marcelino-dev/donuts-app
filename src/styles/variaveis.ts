@@ -1,12 +1,14 @@
 
 export const cores = {
     branco: '#ffffff',
-    cinzclaro: '#888888',
+    creme: '#fdf6ee',       // fundo das telas
+    cinza: '#6e5a50',       // textos secundários
     azul: "#0400ffff",
-    laranja: '#ff9800',
-    laranjaclaro: '#ffe8c5',
+    rosa: '#e07a85',        // cor de destaque (botões, preços, ícones)
+    rosaEscuro: '#b94e5c',
+    rosaClaro: '#fbede6',
     verde: '#2e9e4f',
-    preto: '#000000',
+    chocolate: '#2a1710',   // textos principais
     verdeClaro:"#ddffee",
 }
 

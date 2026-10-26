@@ -26,7 +26,7 @@ const alterarSenhaStyle = StyleSheet.create({
         width: 42,
         height: 42,
         borderRadius: "50%",
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -45,7 +45,7 @@ const alterarSenhaStyle = StyleSheet.create({
 
     titulo: {
         fontSize: 30,
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
         fontFamily: fontes.negrito,
@@ -54,7 +54,7 @@ const alterarSenhaStyle = StyleSheet.create({
     subtitulo: {
         marginTop: 10,
         fontSize: 15,
-        color: cores.cinzclaro,
+        color: cores.cinza,
     },
 
     main: {
@@ -73,7 +73,7 @@ const alterarSenhaStyle = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 12,
         paddingHorizontal: 14,
@@ -84,7 +84,7 @@ const alterarSenhaStyle = StyleSheet.create({
     iconeCampo: {
         width: 20,
         height: 20,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
         marginRight: 10,
     },
 
@@ -92,7 +92,7 @@ const alterarSenhaStyle = StyleSheet.create({
         flex: 1,
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     btnMostrarSenha: {
@@ -102,14 +102,14 @@ const alterarSenhaStyle = StyleSheet.create({
     imgMostrarSenha: {
         width: 20,
         height: 20,
-        tintColor: cores.cinzclaro,
+        tintColor: cores.cinza,
     },
 
     cardDicas: {
         flexDirection: 'row',
         width: '100%',
-        backgroundColor: cores.laranjaclaro,
-        borderColor: cores.laranja,
+        backgroundColor: cores.rosaClaro,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 12,
         padding: 14,
@@ -120,7 +120,7 @@ const alterarSenhaStyle = StyleSheet.create({
         width: 30,
         height: 30,
         borderRadius: 15,
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 12,
@@ -139,20 +139,20 @@ const alterarSenhaStyle = StyleSheet.create({
     tituloDicas: {
         fontSize: 14,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
         marginBottom: 6,
     },
 
     itemDica: {
         fontSize: 12,
         fontFamily: fontes.comum,
-        color: cores.preto,
+        color: cores.chocolate,
         marginBottom: 2,
     },
 
     btnSalvar: {
         width: '100%',
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         borderRadius: 15,
         paddingVertical: 16,
         alignItems: 'center',
@@ -167,7 +167,7 @@ const alterarSenhaStyle = StyleSheet.create({
 
     btnCancelar: {
         width: '100%',
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         paddingVertical: 16,
@@ -178,7 +178,7 @@ const alterarSenhaStyle = StyleSheet.create({
     txtCancelar: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     txtErro: {

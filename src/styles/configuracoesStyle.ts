@@ -26,7 +26,7 @@ const configuracoesStyle = StyleSheet.create({
         width: 42,
         height: 42,
         borderRadius: "50%",
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -45,7 +45,7 @@ const configuracoesStyle = StyleSheet.create({
 
     titulo: {
         fontSize: 30,
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
         fontFamily: fontes.negrito,
@@ -54,7 +54,7 @@ const configuracoesStyle = StyleSheet.create({
     subtitulo: {
         marginTop: 10,
         fontSize: 15,
-        color: cores.cinzclaro,
+        color: cores.cinza,
     },
 
     main: {
@@ -68,7 +68,7 @@ const configuracoesStyle = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         padding: 15,
@@ -79,7 +79,7 @@ const configuracoesStyle = StyleSheet.create({
         width: 46,
         height: 46,
         borderRadius: 23,
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 12,
@@ -88,7 +88,7 @@ const configuracoesStyle = StyleSheet.create({
     imgAvatarUsuario: {
         width: 24,
         height: 24,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     // Foto real do cliente: ocupa o círculo todo e não recebe cor
@@ -105,20 +105,20 @@ const configuracoesStyle = StyleSheet.create({
     nomeUsuario: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     descricaoUsuario: {
         fontSize: 12,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginTop: 2,
     },
 
     tituloSecao: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
         marginBottom: 12,
     },
 
@@ -127,7 +127,7 @@ const configuracoesStyle = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 12,
         padding: 12,
@@ -138,7 +138,7 @@ const configuracoesStyle = StyleSheet.create({
         width: 38,
         height: 38,
         borderRadius: 10,
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 12,
@@ -147,7 +147,7 @@ const configuracoesStyle = StyleSheet.create({
     imgItem: {
         width: 20,
         height: 20,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     infoItem: {
@@ -157,25 +157,25 @@ const configuracoesStyle = StyleSheet.create({
     tituloItem: {
         fontSize: 14,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     descricaoItem: {
         fontSize: 11,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginTop: 2,
     },
 
     txtSeta: {
         fontSize: 18,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
         marginLeft: 8,
     },
 
     btnInstalar: {
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         borderRadius: 10,
         paddingVertical: 8,
         paddingHorizontal: 14,
@@ -196,7 +196,7 @@ const configuracoesStyle = StyleSheet.create({
 
     btnSair: {
         width: '100%',
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         borderRadius: 15,
         paddingVertical: 16,
         alignItems: 'center',
@@ -241,13 +241,13 @@ const configuracoesStyle = StyleSheet.create({
     modalTitulo: {
         fontSize: fontes.fontgrande,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     modalSubtitulo: {
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginTop: 4,
         marginBottom: 20,
     },

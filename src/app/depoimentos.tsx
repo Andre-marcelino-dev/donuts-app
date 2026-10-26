@@ -21,7 +21,7 @@ import { buscarDepoimentos, Depoimento, enviarDepoimento } from "@/utils/depoime
 
 // Cor da etiqueta de cada situação
 const corSituacao: Record<Depoimento["status"], { fundo: string; texto: string }> = {
-    PENDENTE: { fundo: cores.laranjaclaro, texto: "#b36b00" },
+    PENDENTE: { fundo: cores.rosaClaro, texto: "#b94e5c" },
     APROVADO: { fundo: cores.verdeClaro, texto: cores.verde },
     RECUSADO: { fundo: "#eeeeee", texto: "#777777" },
 };
@@ -125,7 +125,7 @@ export default function DepoimentosScreen() {
                                 <TextInput
                                     style={depoimentosStyle.inputDepoimento}
                                     placeholder="Conte como foi sua experiência, sabor, atendimento ou entrega."
-                                    placeholderTextColor={cores.cinzclaro}
+                                    placeholderTextColor={cores.cinza}
                                     multiline
                                     numberOfLines={4}
                                     value={depoimento}

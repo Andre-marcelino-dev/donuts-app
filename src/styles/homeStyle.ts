@@ -21,16 +21,16 @@ const homeStyle = StyleSheet.create({
 
         fontSize: 30,
         fontWeight: "bold",
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: "center",
         fontFamily: fontes.negrito
     },
     bordaPerfil: {
         padding: 15,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderRadius: "50%",
         borderWidth: 2,
-         backgroundColor:cores.laranjaclaro,
+         backgroundColor:cores.rosaClaro,
     },
     perfil: {
         width: 50,
@@ -49,7 +49,7 @@ const homeStyle = StyleSheet.create({
     subtitulo: {
         marginTop: 10,
         fontSize: 18,
-        color: cores.cinzclaro
+        color: cores.cinza
     },
     main: {
         width: '80%',
@@ -59,7 +59,7 @@ const homeStyle = StyleSheet.create({
     buscaPoduto: {
         width: '100%',
         height: 50,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 10,
         padding: 10,
@@ -70,7 +70,7 @@ const homeStyle = StyleSheet.create({
 
     txtProduto: {
         marginVertical: 'auto',
-        color: cores.preto,
+        color: cores.chocolate,
         fontSize: 15,
         width:'100%',
 
@@ -78,7 +78,7 @@ const homeStyle = StyleSheet.create({
     btnBuscar: {
         width:30,
         height:30,
-         backgroundColor:cores.laranjaclaro,
+         backgroundColor:cores.rosaClaro,
 
 
     },
@@ -97,7 +97,7 @@ banner:{
 tituloCategoria:{
     fontSize: 30,
         fontWeight: "bold",
-        color: cores.preto,
+        color: cores.chocolate,
         
         fontFamily: fontes.negrito,
         margin:20,
@@ -116,7 +116,7 @@ conteudoCategoria:{
 
 tituloSecao:{
     fontSize:30,
-    color:cores.preto,
+    color:cores.chocolate,
     fontFamily:fontes.negrito,
     marginBottom:10,
 },
@@ -130,7 +130,7 @@ itemCategoria:{
     paddingHorizontal:4,
     alignItems:'center',
     justifyContent:'center',
-    backgroundColor:cores.laranja,
+    backgroundColor:cores.rosa,
 },
 
 // Sem margem na última de cada linha
@@ -150,7 +150,7 @@ textAlign:'center',
 txtMensagem:{
 fontSize:10,
 fontFamily:fontes.comum,
-color:cores.cinzclaro,
+color:cores.cinza,
 marginTop:6,
 textAlign:'center',
 },
@@ -172,7 +172,7 @@ cardDestaque:{
     backgroundColor:cores.branco,
     borderRadius:15,
     padding:6,
-    shadowColor: cores.preto,
+    shadowColor: cores.chocolate,
     shadowOffset:{ width: 0, height: 2 },
     shadowOpacity:0.1,
     shadowRadius:4,
@@ -196,22 +196,22 @@ badgeDestaque:{
     width:22,
     height:22,
     borderRadius:8,
-    borderColor:cores.laranja,
+    borderColor:cores.rosa,
     borderWidth:1.5,
-    backgroundColor:cores.laranjaclaro,
+    backgroundColor:cores.rosaClaro,
     alignItems:'center',
     justifyContent:'center',
 },
 
 txtEstrela:{
     fontSize:12,
-    color:cores.laranja,
+    color:cores.rosa,
 },
 
 nomeDestaque:{
     fontSize:fontes.fontpeq,
     fontFamily:fontes.negrito,
-    color:cores.preto,
+    color:cores.chocolate,
     textAlign:'center',
     marginTop:10,
     height:30,
@@ -220,7 +220,7 @@ nomeDestaque:{
 descricaoDestaque:{
     fontSize:10,
     fontFamily:fontes.comum,
-    color:cores.cinzclaro,
+    color:cores.cinza,
     marginTop:2,
     height:30,
     margin:5,
@@ -236,14 +236,14 @@ rodapeDestaque:{
 precoDestaque:{
     fontSize:fontes.fontpeq,
     fontFamily:fontes.negrito,
-    color:cores.laranja,
+    color:cores.rosa,
 },
 
 btnAdicionar:{
     width:20,
     height:20,
     borderRadius:10,
-    backgroundColor:cores.laranja,
+    backgroundColor:cores.rosa,
     alignItems:'center',
     justifyContent:'center',
 },

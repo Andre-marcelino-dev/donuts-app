@@ -19,14 +19,14 @@ const loginStyle = StyleSheet.create({
         marginTop: 30,
         fontSize: fontes.fontxgrande,
         fontWeight: 'bold',
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: 'center',
     },
 
     subtitulo: {
         margin: 10,
         fontSize: fontes.fontgrande,
-        color: cores.cinzclaro,
+        color: cores.cinza,
     },
 
     form: {
@@ -39,7 +39,7 @@ const loginStyle = StyleSheet.create({
     input: {
         height: 50,
         flexDirection: 'row',
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 10,
         padding: 10,
@@ -76,17 +76,17 @@ const loginStyle = StyleSheet.create({
 
     txtEsqueciSenha: {
         fontSize: 12,
-        color: '#ff98001',
+        color: '#e07a85',
         textDecorationLine: 'underline',
     },
 
     btnEntrar: {
         width: '80%',
         height: 50,
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         justifyContent: 'center',
         borderRadius: 10,
-        borderColor:cores.preto,
+        borderColor:cores.chocolate,
         borderWidth:2,
         marginTop: 20,
         alignItems: 'center',
@@ -94,7 +94,7 @@ const loginStyle = StyleSheet.create({
 
     textoEntrar: {
         fontSize: fontes.fonttitulo,
-        color: cores.preto,
+        color: cores.chocolate,
         fontWeight: 'bold',
     },
 
@@ -113,7 +113,7 @@ const loginStyle = StyleSheet.create({
     linha: {
         flex: 1,
         height: 2,
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
     },
 
     textoSeparador: {
@@ -125,10 +125,10 @@ const loginStyle = StyleSheet.create({
     btnTenhoConta: {
         width: '80%',
         height: 50,
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         justifyContent: 'center',
         borderRadius: 10,
-        borderColor:cores.laranja,
+        borderColor:cores.rosa,
         borderWidth:2,
         alignItems: 'center',
         margin:10,
@@ -136,7 +136,7 @@ const loginStyle = StyleSheet.create({
     },
 
     btnCriarContaPressed:{
-         backgroundColor:cores.laranja,
+         backgroundColor:cores.rosa,
 
     }
 

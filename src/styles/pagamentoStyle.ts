@@ -26,7 +26,7 @@ const pagamentoStyle = StyleSheet.create({
         width: 42,
         height: 42,
         borderRadius: "50%",
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -45,7 +45,7 @@ const pagamentoStyle = StyleSheet.create({
 
     titulo: {
         fontSize: 30,
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
         fontFamily: fontes.negrito,
@@ -54,7 +54,7 @@ const pagamentoStyle = StyleSheet.create({
     subtitulo: {
         marginTop: 10,
         fontSize: 15,
-        color: cores.cinzclaro,
+        color: cores.cinza,
     },
 
     main: {
@@ -66,7 +66,7 @@ const pagamentoStyle = StyleSheet.create({
     card: {
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         padding: 15,
@@ -83,40 +83,40 @@ const pagamentoStyle = StyleSheet.create({
         width: 18,
         height: 18,
         marginRight: 8,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     iconeCarteira: {
         width: 18,
         height: 18,
         marginRight: 8,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     labelCard: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     txtAlterar: {
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
         textDecorationLine: 'underline',
     },
 
     txtEnderecoTitulo: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
         marginTop: 8,
     },
 
     txtEndereco: {
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginTop: 4,
         lineHeight: 18,
     },
@@ -138,7 +138,7 @@ const pagamentoStyle = StyleSheet.create({
 
     segmentado: {
         flexDirection: 'row',
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 10,
         overflow: 'hidden',
@@ -152,13 +152,13 @@ const pagamentoStyle = StyleSheet.create({
     },
 
     segmentoItemAtivo: {
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
     },
 
     txtSegmento: {
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     txtSegmentoAtivo: {
@@ -172,19 +172,19 @@ const pagamentoStyle = StyleSheet.create({
     txtPrevisaoValor: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     txtPrevisaoLabel: {
         fontSize: 11,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginTop: 2,
     },
 
     segmentado3: {
         flexDirection: 'row',
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 10,
         overflow: 'hidden',
@@ -207,19 +207,19 @@ const pagamentoStyle = StyleSheet.create({
         width: 18,
         height: 18,
         marginRight: 8,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     inputObservacao: {
         width: '100%',
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 10,
         padding: 12,
         marginTop: 10,
         minHeight: 50,
         fontSize: 13,
-        color: cores.preto,
+        color: cores.chocolate,
         fontFamily: fontes.comum,
         textAlignVertical: 'top',
     },
@@ -228,7 +228,7 @@ const pagamentoStyle = StyleSheet.create({
         width: 20,
         height: 20,
         marginRight: 8,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     itemResumo: {
@@ -254,20 +254,20 @@ const pagamentoStyle = StyleSheet.create({
     txtItemResumo: {
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.preto,
+        color: cores.chocolate,
         flexShrink: 1,
     },
 
     txtValorItemResumo: {
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     divisor: {
         width: '100%',
         height: 1,
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         marginVertical: 12,
     },
 
@@ -280,13 +280,13 @@ const pagamentoStyle = StyleSheet.create({
     txtLabelResumo: {
         fontSize: 14,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     txtValorResumo: {
         fontSize: 14,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     txtLabelDesconto: {
@@ -310,19 +310,19 @@ const pagamentoStyle = StyleSheet.create({
     txtLabelTotal: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     txtValorTotal: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     btnConfirmar: {
         width: '80%',
         alignSelf: 'center',
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         borderRadius: 15,
         paddingVertical: 16,
         alignItems: 'center',
@@ -333,7 +333,7 @@ const pagamentoStyle = StyleSheet.create({
     txtConfirmar: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     txtErro: {

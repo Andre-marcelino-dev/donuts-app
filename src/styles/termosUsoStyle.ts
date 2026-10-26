@@ -40,7 +40,7 @@ const termosUsoStyle = StyleSheet.create({
 
   subtitulo:{
     fontSize: 18,
-    color: "#ff9800",
+    color: "#e07a85",
     marginTop: 12,
     marginBottom: 4,
   },
@@ -57,7 +57,7 @@ const termosUsoStyle = StyleSheet.create({
     height: 50,
     marginTop: 16,
     padding: 10,
-    backgroundColor: "#ff9800",
+    backgroundColor: "#e07a85",
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center"

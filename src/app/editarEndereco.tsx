@@ -170,7 +170,7 @@ export default function EditarEnderecoScreen() {
                                     <TextInput
                                         style={editarEnderecoStyle.inputCampo}
                                         placeholder="Casa, Trabalho..."
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         maxLength={30}
                                         value={nomeEndereco}
                                         onChangeText={setNomeEndereco}
@@ -190,7 +190,7 @@ export default function EditarEnderecoScreen() {
                                     <TextInput
                                         style={editarEnderecoStyle.inputCampo}
                                         placeholder="00000-000"
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         keyboardType="numeric"
                                         maxLength={9}
                                         value={cep}
@@ -211,7 +211,7 @@ export default function EditarEnderecoScreen() {
                                     <TextInput
                                         style={editarEnderecoStyle.inputCampo}
                                         placeholder="Rua, avenida..."
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         maxLength={40}
                                         value={endereco}
                                         onChangeText={setEndereco}
@@ -231,7 +231,7 @@ export default function EditarEnderecoScreen() {
                                     <TextInput
                                         style={editarEnderecoStyle.inputCampo}
                                         placeholder="1500"
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         maxLength={6}
                                         value={numero}
                                         onChangeText={setNumero}
@@ -251,7 +251,7 @@ export default function EditarEnderecoScreen() {
                                     <TextInput
                                         style={editarEnderecoStyle.inputCampo}
                                         placeholder="Apto, bloco, sala..."
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         maxLength={50}
                                         value={complemento}
                                         onChangeText={setComplemento}
@@ -271,7 +271,7 @@ export default function EditarEnderecoScreen() {
                                     <TextInput
                                         style={editarEnderecoStyle.inputCampo}
                                         placeholder="Bairro"
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         maxLength={40}
                                         value={bairro}
                                         onChangeText={setBairro}
@@ -291,7 +291,7 @@ export default function EditarEnderecoScreen() {
                                     <TextInput
                                         style={editarEnderecoStyle.inputCampo}
                                         placeholder="Cidade"
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         maxLength={40}
                                         value={cidade}
                                         onChangeText={setCidade}
@@ -311,7 +311,7 @@ export default function EditarEnderecoScreen() {
                                     <TextInput
                                         style={editarEnderecoStyle.inputCampo}
                                         placeholder="SP"
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         autoCapitalize="characters"
                                         maxLength={2}
                                         value={uf}

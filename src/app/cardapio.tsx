@@ -222,7 +222,7 @@ export default function CardapioScreen() {
                             <View style={cardapioStyle.buscaPoduto}>
                                 <TextInput style={cardapioStyle.txtProduto}
                                     placeholder="Buscar produto"
-                                    placeholderTextColor={cores.cinzclaro}
+                                    placeholderTextColor={cores.cinza}
                                     value={busca}
                                     onChangeText={setBusca}
                                     returnKeyType="search"

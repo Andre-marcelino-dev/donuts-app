@@ -20,9 +20,9 @@ const produtoStyle = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: "50%",
-    borderColor: cores.laranja,
+    borderColor: cores.rosa,
     borderWidth: 2,
-    backgroundColor: cores.laranjaclaro,
+    backgroundColor: cores.rosaClaro,
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: -2, // valor negativo joga para trás dos elementos "normais"
@@ -37,7 +37,7 @@ const produtoStyle = StyleSheet.create({
         width: 42,
         height: 42,
         borderRadius: "50%",
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -51,12 +51,12 @@ const produtoStyle = StyleSheet.create({
     iconeTopo: {
         width: 20,
         height: 20,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     txtFavorito: {
         fontSize: 20,
-        color: cores.laranja,
+        color: cores.rosa,
     },
     
     main: {
@@ -83,7 +83,7 @@ const produtoStyle = StyleSheet.create({
         flex: 1,
         fontSize: fontes.fontgrande,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: 'center',
         marginHorizontal: 10,
         paddingTop: 10,
@@ -92,19 +92,19 @@ const produtoStyle = StyleSheet.create({
     categoria: {
         fontSize: fontes.fontpeq,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
     },
 
     preco: {
         fontSize: fontes.fontxg,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     textoResumo: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         lineHeight: 22,
         marginTop: 15,
     },
@@ -112,7 +112,7 @@ const produtoStyle = StyleSheet.create({
     tituloSecao: {
         fontSize: fontes.fontgrande,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
         marginTop: 25,
         marginBottom: 10,
     },
@@ -120,7 +120,7 @@ const produtoStyle = StyleSheet.create({
     textoDescricao: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         lineHeight: 22,
         marginBottom: 40,
     },
@@ -132,7 +132,7 @@ const produtoStyle = StyleSheet.create({
         backgroundColor: cores.branco,
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
-        shadowColor: cores.preto,
+        shadowColor: cores.chocolate,
         shadowOffset: { width: 0, height: -2 },
         shadowOpacity: 0.1,
         shadowRadius: 6,
@@ -150,7 +150,7 @@ const produtoStyle = StyleSheet.create({
     quantidade: {
         flexDirection: 'row',
         alignItems: 'center',
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 10,
         marginLeft: 10,
@@ -166,13 +166,13 @@ const produtoStyle = StyleSheet.create({
     txtBtnQuantidade: {
         fontSize: 18,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     txtQuantidade: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         minWidth: 20,
         textAlign: 'center',
     },
@@ -185,20 +185,20 @@ const produtoStyle = StyleSheet.create({
     txtSubtotalLabel: {
         fontSize: fontes.fontgrande,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginRight: 6,
     },
 
     txtSubtotalValor: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     btnAdicionarSacola: {
         width: '50%',
         alignSelf: 'center',
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         borderRadius: 15,
         paddingVertical: 16,
         paddingHorizontal: 20,

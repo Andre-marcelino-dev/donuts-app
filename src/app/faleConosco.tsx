@@ -77,7 +77,7 @@ export default function FaleConoscoScreen() {
                                 <TextInput
                                     style={faleConoscoStyle.inputCampo}
                                     placeholder="Assunto"
-                                    placeholderTextColor={cores.cinzclaro}
+                                    placeholderTextColor={cores.cinza}
                                     value={assunto}
                                     onChangeText={setAssunto}
                                     maxLength={30}
@@ -92,7 +92,7 @@ export default function FaleConoscoScreen() {
                                 <TextInput
                                     style={faleConoscoStyle.inputMensagem}
                                     placeholder="Mensagem"
-                                    placeholderTextColor={cores.cinzclaro}
+                                    placeholderTextColor={cores.cinza}
                                     multiline
                                     numberOfLines={6}
                                     value={mensagem}

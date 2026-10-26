@@ -344,7 +344,7 @@ export default function EditarPerfilScreen() {
                                     <TextInput
                                         style={editarPerfilStyle.inputCampo}
                                         placeholder="Seu nome completo aqui"
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         value={nome}
                                         onChangeText={setNome}
                                     />
@@ -358,7 +358,7 @@ export default function EditarPerfilScreen() {
                                     <TextInput
                                         style={editarPerfilStyle.inputCampo}
                                         placeholder="seuemail@exemplo.com"
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         keyboardType="email-address"
                                         autoCapitalize="none"
                                         value={email}
@@ -375,7 +375,7 @@ export default function EditarPerfilScreen() {
                                     <TextInput
                                         style={editarPerfilStyle.inputCampo}
                                         placeholder="(11)98888-7777"
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         keyboardType="phone-pad"
                                         maxLength={14}
                                         value={telefone}
@@ -391,7 +391,7 @@ export default function EditarPerfilScreen() {
                                     <TextInput
                                         style={editarPerfilStyle.inputCampo}
                                         placeholder="000.000.000-00"
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         keyboardType="numeric"
                                         value={cpf}
                                         onChangeText={setCpf}
@@ -412,7 +412,7 @@ export default function EditarPerfilScreen() {
                                     <TextInput
                                         style={editarPerfilStyle.inputCampo}
                                         placeholder="dd/mm/aaaa"
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         keyboardType="numeric"
                                         maxLength={10}
                                         value={nascimento}

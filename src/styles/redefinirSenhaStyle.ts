@@ -16,7 +16,7 @@ const redefinirSenhaStyle = StyleSheet.create({
     marginTop: 30,
     fontSize: 30,
     fontWeight: "bold",
-    color: cores.preto,
+    color: cores.chocolate,
     textAlign: "center",
     fontFamily:'Oswald_700Bold',
   },
@@ -24,7 +24,7 @@ const redefinirSenhaStyle = StyleSheet.create({
   subtitulo: {
     marginTop: 10,
     fontSize: 18,
-    color: cores.cinzclaro,
+    color: cores.cinza,
   },
 
   form: {
@@ -37,7 +37,7 @@ const redefinirSenhaStyle = StyleSheet.create({
   input: {
     height: 50,
     flexDirection: "row",
-    borderColor: cores.laranja,
+    borderColor: cores.rosa,
     borderWidth: 2,
     borderRadius: 10,
     padding: 10,
@@ -68,7 +68,7 @@ const redefinirSenhaStyle = StyleSheet.create({
 
   txtEnviar: {
     fontSize: fontes.fontmedia,
-    color: cores.preto,
+    color: cores.chocolate,
     textDecorationLine: "underline",
   },
 
@@ -87,7 +87,7 @@ const redefinirSenhaStyle = StyleSheet.create({
     width: "100%",
     height: "100%",
     backgroundColor: cores.branco,
-    borderColor: cores.laranja,
+    borderColor: cores.rosa,
     borderWidth: 1,
     borderRadius: 5,
     alignItems: "center",
@@ -95,7 +95,7 @@ const redefinirSenhaStyle = StyleSheet.create({
   },
 
   checkTermosAtivo: {
-    backgroundColor: cores.laranja,
+    backgroundColor: cores.rosa,
   },
 
   checkOK: {
@@ -107,23 +107,23 @@ const redefinirSenhaStyle = StyleSheet.create({
 
   txtTermos: {
     fontSize: 15,
-    color: cores.cinzclaro,
+    color: cores.cinza,
   },
 
   termoAceito: {
-    color: cores.cinzclaro,
+    color: cores.cinza,
   },
 
   linkTermos: {
     fontSize: 15,
-    color: cores.laranja,
+    color: cores.rosa,
     textDecorationLine: "underline",
   },
 
   btnSalvar: {
     width: "80%",
     height: 50,
-    backgroundColor: cores.laranja,
+    backgroundColor: cores.rosa,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
@@ -137,33 +137,33 @@ const redefinirSenhaStyle = StyleSheet.create({
   btnCriarConta: {
     width: "80%",
     height: 50,
-    backgroundColor: cores.laranja,
+    backgroundColor: cores.rosa,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
-    borderColor: cores.laranja,
+    borderColor: cores.rosa,
     borderWidth: 2,
   },
 
   txtCriarConta: {
-    color: cores.preto,
+    color: cores.chocolate,
     fontSize:fontes.fonttitulo,
     fontWeight: "bold",
   },
 
   btnSalvarPressed: {
-    backgroundColor: cores.laranja,
+    backgroundColor: cores.rosa,
   },
 
 
     btnVoltar: {
     width: "80%",
     height: 50,
-    backgroundColor: "#FFE8C5",
+    backgroundColor: "#fbede6",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
-    borderColor: "#ff9800",
+    borderColor: "#e07a85",
     borderWidth: 2,
   },
 
@@ -174,7 +174,7 @@ const redefinirSenhaStyle = StyleSheet.create({
   },
 
   btnVoltarPressed: {
-    backgroundColor: "#ff9800",
+    backgroundColor: "#e07a85",
   },
 });
 

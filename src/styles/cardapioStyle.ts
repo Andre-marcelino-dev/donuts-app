@@ -26,7 +26,7 @@ const cardapioStyle = StyleSheet.create({
         width: 42,
         height: 42,
         borderRadius: "50%",
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -45,7 +45,7 @@ const cardapioStyle = StyleSheet.create({
         
         fontSize: 30,
         fontWeight: "bold",
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: "left",
         marginTop: 15,
         fontFamily: fontes.negrito
@@ -55,7 +55,7 @@ const cardapioStyle = StyleSheet.create({
     subtitulo: {
         marginTop: 10,
         fontSize: 18,
-        color: cores.cinzclaro
+        color: cores.cinza
     },
     main: {
         width: '80%',
@@ -65,7 +65,7 @@ const cardapioStyle = StyleSheet.create({
     buscaPoduto: {
         width: '100%',
         height: 50,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 10,
         padding: 10,
@@ -76,7 +76,7 @@ const cardapioStyle = StyleSheet.create({
     
     txtProduto: {
         marginVertical: 'auto',
-        color: cores.preto,
+        color: cores.chocolate,
         fontSize: 15,
         width: '100%',
         
@@ -84,7 +84,7 @@ const cardapioStyle = StyleSheet.create({
     btnBuscar: {
         width: 30,
         height: 30,
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         
         
     },
@@ -103,7 +103,7 @@ const cardapioStyle = StyleSheet.create({
     tituloCategoria: {
         fontSize: 30,
         fontWeight: "bold",
-        color: cores.preto,
+        color: cores.chocolate,
         
         fontFamily: fontes.negrito,
         margin: 20,
@@ -125,7 +125,7 @@ const cardapioStyle = StyleSheet.create({
 
     tituloSecao: {
         fontSize: 30,
-        color: cores.preto,
+        color: cores.chocolate,
         fontFamily: fontes.negrito,
 
     },
@@ -139,7 +139,7 @@ const cardapioStyle = StyleSheet.create({
         paddingHorizontal: 4,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
     },
 
     // Sem margem na última de cada linha
@@ -175,7 +175,7 @@ const cardapioStyle = StyleSheet.create({
         backgroundColor: cores.branco,
         borderRadius: 15,
         padding: 6,
-        shadowColor: cores.preto,
+        shadowColor: cores.chocolate,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 4,
@@ -200,22 +200,22 @@ const cardapioStyle = StyleSheet.create({
         width: 22,
         height: 22,
         borderRadius: 8,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 1.5,
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         alignItems: 'center',
         justifyContent: 'center',
     },
 
     txtEstrela: {
         fontSize: 12,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     nomeDestaque: {
         fontSize: fontes.fontpeq,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: 'center',
         marginTop: 10,
         height: 30,
@@ -224,7 +224,7 @@ const cardapioStyle = StyleSheet.create({
     descricaoDestaque: {
         fontSize: 10,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         textAlign: 'center',
         marginTop: 2,
         height: 30,
@@ -241,14 +241,14 @@ const cardapioStyle = StyleSheet.create({
     precoDestaque: {
         fontSize: fontes.fontpeq,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     btnAdicionar: {
         width: 20,
         height: 20,
         borderRadius: 10,
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         alignItems: 'center',
         justifyContent: 'center',
     },

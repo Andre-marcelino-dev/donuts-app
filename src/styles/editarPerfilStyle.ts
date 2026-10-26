@@ -26,7 +26,7 @@ const editarPerfilStyle = StyleSheet.create({
         width: 42,
         height: 42,
         borderRadius: "50%",
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -45,7 +45,7 @@ const editarPerfilStyle = StyleSheet.create({
 
     titulo: {
         fontSize: 30,
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
         fontFamily: fontes.negrito,
@@ -54,7 +54,7 @@ const editarPerfilStyle = StyleSheet.create({
     subtitulo: {
         marginTop: 10,
         fontSize: 15,
-        color: cores.cinzclaro,
+        color: cores.cinza,
     },
 
     main: {
@@ -66,7 +66,7 @@ const editarPerfilStyle = StyleSheet.create({
     cardFoto: {
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         padding: 15,
@@ -83,7 +83,7 @@ const editarPerfilStyle = StyleSheet.create({
         width: 54,
         height: 54,
         borderRadius: 27,
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -91,7 +91,7 @@ const editarPerfilStyle = StyleSheet.create({
     imgAvatarFoto: {
         width: 28,
         height: 28,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     // Foto real do cliente: ocupa o círculo todo e não recebe cor
@@ -102,7 +102,7 @@ const editarPerfilStyle = StyleSheet.create({
     },
 
     btnAlterarFoto: {
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 20,
         paddingVertical: 8,
@@ -112,13 +112,13 @@ const editarPerfilStyle = StyleSheet.create({
     txtAlterarFoto: {
         fontSize: 12,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     txtDescricaoFoto: {
         fontSize: 12,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginTop: 12,
     },
 
@@ -132,7 +132,7 @@ const editarPerfilStyle = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 12,
         paddingHorizontal: 14,
@@ -155,7 +155,7 @@ const editarPerfilStyle = StyleSheet.create({
     iconeCampo: {
         width: 20,
         height: 20,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
         marginRight: 10,
     },
 
@@ -163,7 +163,7 @@ const editarPerfilStyle = StyleSheet.create({
         flex: 1,
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     cardNotificacao: {
@@ -171,7 +171,7 @@ const editarPerfilStyle = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 12,
         padding: 14,
@@ -182,7 +182,7 @@ const editarPerfilStyle = StyleSheet.create({
         width: 38,
         height: 38,
         borderRadius: 10,
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 12,
@@ -191,7 +191,7 @@ const editarPerfilStyle = StyleSheet.create({
     imgIconeNotificacao: {
         width: 20,
         height: 20,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     infoNotificacao: {
@@ -201,13 +201,13 @@ const editarPerfilStyle = StyleSheet.create({
     tituloNotificacao: {
         fontSize: 14,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     descricaoNotificacao: {
         fontSize: 11,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginTop: 2,
     },
 
@@ -219,7 +219,7 @@ const editarPerfilStyle = StyleSheet.create({
 
     btnSalvar: {
         width: '100%',
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         borderRadius: 15,
         paddingVertical: 16,
         alignItems: 'center',
@@ -234,7 +234,7 @@ const editarPerfilStyle = StyleSheet.create({
 
     btnCancelar: {
         width: '100%',
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         paddingVertical: 16,
@@ -245,7 +245,7 @@ const editarPerfilStyle = StyleSheet.create({
     txtCancelar: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     txtErro: {
@@ -293,13 +293,13 @@ const editarPerfilStyle = StyleSheet.create({
     modalTitulo: {
         fontSize: fontes.fontgrande,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     modalSubtitulo: {
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginTop: 2,
         marginBottom: 18,
     },
@@ -323,7 +323,7 @@ const editarPerfilStyle = StyleSheet.create({
         width: 44,
         height: 44,
         borderRadius: 12,
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 14,
@@ -332,7 +332,7 @@ const editarPerfilStyle = StyleSheet.create({
     imgOpcaoFoto: {
         width: 22,
         height: 22,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     infoOpcaoFoto: {
@@ -342,13 +342,13 @@ const editarPerfilStyle = StyleSheet.create({
     tituloOpcaoFoto: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     descricaoOpcaoFoto: {
         fontSize: 12,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginTop: 1,
     },
 

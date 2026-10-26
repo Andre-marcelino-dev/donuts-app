@@ -389,7 +389,7 @@ export default function PagamentoScreen() {
                                 <TextInput
                                     style={pagamentoStyle.inputObservacao}
                                     placeholder="Alguma Observação para seu pedido"
-                                    placeholderTextColor={cores.cinzclaro}
+                                    placeholderTextColor={cores.cinza}
                                     value={observacao}
                                     onChangeText={setObservacao}
                                     multiline

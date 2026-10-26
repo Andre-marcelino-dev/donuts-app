@@ -11,7 +11,7 @@ const footerStyle = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 15,
         backgroundColor: cores.branco,
-        shadowColor: cores.preto,
+        shadowColor: cores.chocolate,
         shadowOffset: { width: 0, height: -2 },
         shadowOpacity: 0.1,
         shadowRadius: 6,
@@ -26,22 +26,22 @@ const footerStyle = StyleSheet.create({
     imgMenu: {
         width: 26,
         height: 26,
-        tintColor: cores.cinzclaro,
+        tintColor: cores.cinza,
     },
 
     imgMenuAtivo: {
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     txtMenu: {
         fontSize: 11,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginTop: 4,
     },
 
     txtMenuAtivo: {
-        color: cores.laranja,
+        color: cores.rosa,
         fontFamily: fontes.negrito,
     },
 

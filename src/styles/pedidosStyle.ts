@@ -26,7 +26,7 @@ const pedidosStyle = StyleSheet.create({
         width: 42,
         height: 42,
         borderRadius: "50%",
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -45,7 +45,7 @@ const pedidosStyle = StyleSheet.create({
 
     titulo: {
         fontSize: 30,
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
         fontFamily: fontes.negrito,
@@ -54,7 +54,7 @@ const pedidosStyle = StyleSheet.create({
     subtitulo: {
         marginTop: 10,
         fontSize: 15,
-        color: cores.cinzclaro,
+        color: cores.cinza,
     },
 
     main: {
@@ -65,7 +65,7 @@ const pedidosStyle = StyleSheet.create({
 
     abas: {
         flexDirection: 'row',
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         borderRadius: 12,
         padding: 4,
         marginBottom: 20,
@@ -80,13 +80,13 @@ const pedidosStyle = StyleSheet.create({
     },
 
     abaAtiva: {
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
     },
 
     txtAba: {
         fontSize: 14,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     txtAbaAtiva: {
@@ -99,7 +99,7 @@ const pedidosStyle = StyleSheet.create({
         borderRadius: 15,
         padding: 15,
         marginBottom: 20,
-        shadowColor: cores.preto,
+        shadowColor: cores.chocolate,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 4,
@@ -121,7 +121,7 @@ const pedidosStyle = StyleSheet.create({
         width: 32,
         height: 32,
         borderRadius: 8,
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 8,
@@ -130,13 +130,13 @@ const pedidosStyle = StyleSheet.create({
     imgPedido: {
         width: 18,
         height: 18,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     txtNumeroPedido: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     linhaStatus: {
@@ -153,7 +153,7 @@ const pedidosStyle = StyleSheet.create({
     txtStatus: {
         fontSize: 12,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     listaItens: {
@@ -176,13 +176,13 @@ const pedidosStyle = StyleSheet.create({
     txtItem: {
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     divisor: {
         width: '100%',
         height: 1,
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         marginVertical: 8,
     },
 
@@ -196,13 +196,13 @@ const pedidosStyle = StyleSheet.create({
     txtLabelTotal: {
         fontSize: 12,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
     },
 
     txtValorTotal: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
         marginTop: 2,
     },
 
@@ -219,25 +219,25 @@ const pedidosStyle = StyleSheet.create({
         width: 14,
         height: 14,
         marginRight: 4,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     txtValorPrevisao: {
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     txtLabelPrevisao: {
         fontSize: 11,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginTop: 2,
     },
 
     btnDetalhes: {
         width: '100%',
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 12,
         paddingVertical: 10,
@@ -247,7 +247,7 @@ const pedidosStyle = StyleSheet.create({
     txtDetalhes: {
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     cardPedidoEntregue: {
@@ -329,7 +329,7 @@ const pedidosStyle = StyleSheet.create({
     },
 
     btnVerDetalhesPeq: {
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 10,
         paddingVertical: 8,
@@ -340,11 +340,11 @@ const pedidosStyle = StyleSheet.create({
     txtVerDetalhesPeq: {
         fontSize: 11,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     btnPedirNovamentePeq: {
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         borderRadius: 10,
         paddingVertical: 8,
         paddingHorizontal: 12,

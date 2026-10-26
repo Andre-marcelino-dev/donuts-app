@@ -26,7 +26,7 @@ const enderecosStyle = StyleSheet.create({
         width: 42,
         height: 42,
         borderRadius: "50%",
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -45,7 +45,7 @@ const enderecosStyle = StyleSheet.create({
 
     titulo: {
         fontSize: 30,
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
         fontFamily: fontes.negrito,
@@ -54,7 +54,7 @@ const enderecosStyle = StyleSheet.create({
     subtitulo: {
         marginTop: 10,
         fontSize: 15,
-        color: cores.cinzclaro,
+        color: cores.cinza,
     },
 
     main: {
@@ -66,7 +66,7 @@ const enderecosStyle = StyleSheet.create({
     card: {
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         padding: 15,
@@ -88,7 +88,7 @@ const enderecosStyle = StyleSheet.create({
         width: 34,
         height: 34,
         borderRadius: 9,
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 10,
@@ -97,13 +97,13 @@ const enderecosStyle = StyleSheet.create({
     imgTipo: {
         width: 18,
         height: 18,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     txtTipo: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     btnFavorito: {
@@ -113,17 +113,17 @@ const enderecosStyle = StyleSheet.create({
     imgFavorito: {
         width: 22,
         height: 22,
-        tintColor: cores.cinzclaro,
+        tintColor: cores.cinza,
     },
 
     imgFavoritoAtivo: {
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     txtEndereco: {
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.preto,
+        color: cores.chocolate,
         marginTop: 10,
         marginLeft: 44,
         lineHeight: 18,
@@ -150,7 +150,7 @@ const enderecosStyle = StyleSheet.create({
     txtUsarEndereco: {
         fontSize: 12,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
         textDecorationLine: 'underline',
     },
 
@@ -161,7 +161,7 @@ const enderecosStyle = StyleSheet.create({
 
     btnEditar: {
         flex: 1,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 10,
         paddingVertical: 9,
@@ -172,12 +172,12 @@ const enderecosStyle = StyleSheet.create({
     txtEditar: {
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     btnExcluir: {
         flex: 1,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 10,
         paddingVertical: 9,
@@ -187,12 +187,12 @@ const enderecosStyle = StyleSheet.create({
     txtExcluir: {
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     btnAdicionar: {
         width: '100%',
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         borderRadius: 15,
         paddingVertical: 16,
         alignItems: 'center',
@@ -208,7 +208,7 @@ const enderecosStyle = StyleSheet.create({
 
     btnCancelar: {
         width: '100%',
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         paddingVertical: 16,
@@ -219,7 +219,7 @@ const enderecosStyle = StyleSheet.create({
     txtCancelar: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     txtErro: {

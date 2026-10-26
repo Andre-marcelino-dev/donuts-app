@@ -33,7 +33,7 @@ const bannerCarrosselStyle = StyleSheet.create({
 
     bolinhaAtiva: {
         width: 20,
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         opacity: 1,
     },
 

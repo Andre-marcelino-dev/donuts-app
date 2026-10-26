@@ -34,7 +34,7 @@ const esqueciSenhaStyle = StyleSheet.create({
   input: {
     height: 50,
     flexDirection: "row",
-    borderColor: "#ff9800",
+    borderColor: "#e07a85",
     borderWidth: 2,
     borderRadius: 10,
     padding: 10,
@@ -56,7 +56,7 @@ const esqueciSenhaStyle = StyleSheet.create({
   btnEnviar: {
     width: "80%",
     height: 50,
-    backgroundColor: "#ff9800",
+    backgroundColor: "#e07a85",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
@@ -76,11 +76,11 @@ const esqueciSenhaStyle = StyleSheet.create({
   btnVoltar: {
     width: "80%",
     height: 50,
-    backgroundColor: "#FFE8C5",
+    backgroundColor: "#fbede6",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
-    borderColor: "#ff9800",
+    borderColor: "#e07a85",
     borderWidth: 2,
     marginTop: 15,
   },
@@ -92,7 +92,7 @@ const esqueciSenhaStyle = StyleSheet.create({
   },
 
   btnVoltarPressed: {
-    backgroundColor: "#ff9800",
+    backgroundColor: "#e07a85",
   },
 });
 

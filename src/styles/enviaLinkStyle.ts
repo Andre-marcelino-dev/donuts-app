@@ -6,7 +6,7 @@ const enviaLinkStyle = StyleSheet.create({
 
 sobrepor:{
  flex:1,
- backgroundColor:cores.preto,
+ backgroundColor:cores.chocolate,
  justifyContent:'center',
  alignItems:'center',
  padding:20,
@@ -28,12 +28,12 @@ titulo:{
     fontSize:fontes.fonttitulo,
     fontWeight:'bold',
     textAlign:'center',
-    color:cores.preto,
+    color:cores.chocolate,
 
 },
 
 btnEntendi:{
-    backgroundColor:cores.laranja,
+    backgroundColor:cores.rosa,
     borderRadius:10,
     padding:10,
     width:"50%",
@@ -45,7 +45,7 @@ btnEntendi:{
 
 txtEntendi:{
     fontSize:15,
-    color:cores.preto,
+    color:cores.chocolate,
     fontWeight:'bold',
 },
 
@@ -57,13 +57,13 @@ scroll:{
 
 subtitulo:{
     fontSize:18,
-    color:cores.laranja,
+    color:cores.rosa,
     marginVertical:10,
 },
 
 texto:{
     fontSize:15,
-    color:cores.cinzclaro,
+    color:cores.cinza,
     lineHeight:20,
     textAlign:'justify',
 }

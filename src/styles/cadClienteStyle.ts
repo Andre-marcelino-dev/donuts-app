@@ -13,14 +13,14 @@ const cadClienteStyle = StyleSheet.create({
     marginTop: 30,
     fontSize: 30,
     fontWeight: "bold",
-    color: cores.preto,
+    color: cores.chocolate,
     textAlign: "center",
   },
 
   subtitulo: {
     marginTop: 10,
     fontSize: 18,
-    color: cores.cinzclaro,
+    color: cores.cinza,
   },
 
   form: {
@@ -33,7 +33,7 @@ const cadClienteStyle = StyleSheet.create({
   input: {
     height: 50,
     flexDirection: "row",
-    borderColor: cores.laranja,
+    borderColor: cores.rosa,
     borderWidth: 2,
     borderRadius: 10,
     padding: 10,
@@ -64,7 +64,7 @@ const cadClienteStyle = StyleSheet.create({
 
   txtEsqueciSenha: {
     fontSize: 12,
-    color: cores.laranja,
+    color: cores.rosa,
     textDecorationLine: "underline",
   },
 
@@ -83,7 +83,7 @@ const cadClienteStyle = StyleSheet.create({
     width: "100%",
     height: "100%",
     backgroundColor: cores.branco,
-    borderColor: cores.laranja,
+    borderColor: cores.rosa,
     borderWidth: 1,
     borderRadius: 5,
     alignItems: "center",
@@ -91,7 +91,7 @@ const cadClienteStyle = StyleSheet.create({
   },
 
   checkTermosAtivo: {
-    backgroundColor: cores.laranja,
+    backgroundColor: cores.rosa,
   },
 
   checkOK: {
@@ -103,23 +103,23 @@ const cadClienteStyle = StyleSheet.create({
 
   txtTermos: {
     fontSize: 15,
-    color: cores.cinzclaro,
+    color: cores.cinza,
   },
 
   termoAceito: {
-    color: cores.cinzclaro,
+    color: cores.cinza,
   },
 
   linkTermos: {
     fontSize: 15,
-    color: cores.laranja,
+    color: cores.rosa,
     textDecorationLine: "underline",
   },
 
   btnEntrar: {
     width: "80%",
     height: 50,
-    backgroundColor: cores.laranja,
+    backgroundColor: cores.rosa,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
@@ -127,7 +127,7 @@ const cadClienteStyle = StyleSheet.create({
   },
 
   txtEntrar: {
-    color: cores.preto,
+    color: cores.chocolate,
     fontSize: 25,
     fontWeight: "bold",
   },
@@ -147,7 +147,7 @@ const cadClienteStyle = StyleSheet.create({
   linha: {
     flex: 1,
     height: 2,
-    backgroundColor: cores.laranja,
+    backgroundColor: cores.rosa,
   },
 
   textoSeparador: {
@@ -158,22 +158,22 @@ const cadClienteStyle = StyleSheet.create({
   btnCriarConta: {
     width: "80%",
     height: 50,
-    backgroundColor: cores.laranja,
+    backgroundColor: cores.rosa,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
-    borderColor: cores.laranja,
+    borderColor: cores.rosa,
     borderWidth: 2,
   },
 
   txtCriarConta: {
-    color: cores.preto,
+    color: cores.chocolate,
     fontSize: 25,
     fontWeight: "bold",
   },
 
   btnCriarContaPressed: {
-    backgroundColor: cores.laranja,
+    backgroundColor: cores.rosa,
   },
 });
 

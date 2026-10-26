@@ -26,7 +26,7 @@ const faleConoscoStyle = StyleSheet.create({
         width: 42,
         height: 42,
         borderRadius: "50%",
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -45,7 +45,7 @@ const faleConoscoStyle = StyleSheet.create({
 
     titulo: {
         fontSize: 30,
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
         fontFamily: fontes.negrito,
@@ -54,7 +54,7 @@ const faleConoscoStyle = StyleSheet.create({
     subtitulo: {
         marginTop: 10,
         fontSize: 15,
-        color: cores.cinzclaro,
+        color: cores.cinza,
     },
 
     main: {
@@ -68,7 +68,7 @@ const faleConoscoStyle = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 12,
         paddingHorizontal: 14,
@@ -79,7 +79,7 @@ const faleConoscoStyle = StyleSheet.create({
     iconeCampo: {
         width: 20,
         height: 20,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
         marginRight: 10,
     },
 
@@ -87,14 +87,14 @@ const faleConoscoStyle = StyleSheet.create({
         flex: 1,
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     campoMensagem: {
         flexDirection: 'row',
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 12,
         paddingHorizontal: 14,
@@ -105,7 +105,7 @@ const faleConoscoStyle = StyleSheet.create({
     iconeMensagem: {
         width: 20,
         height: 20,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
         marginRight: 10,
         marginTop: 2,
     },
@@ -115,13 +115,13 @@ const faleConoscoStyle = StyleSheet.create({
         minHeight: 140,
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.preto,
+        color: cores.chocolate,
         textAlignVertical: 'top',
     },
 
     btnEnviar: {
         width: '100%',
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         borderRadius: 15,
         paddingVertical: 16,
         alignItems: 'center',
@@ -139,7 +139,7 @@ const faleConoscoStyle = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         padding: 18,
@@ -153,28 +153,28 @@ const faleConoscoStyle = StyleSheet.create({
     tituloAtendimento: {
         fontSize: fontes.fontgrande,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
         marginBottom: 12,
     },
 
     txtValor: {
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.preto,
+        color: cores.chocolate,
         marginBottom: 12,
     },
 
     txtLabel: {
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     iconeCaixaAtendimento: {
         width: 46,
         height: 46,
         borderRadius: 12,
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'flex-start',
@@ -183,7 +183,7 @@ const faleConoscoStyle = StyleSheet.create({
     imgIconeAtendimento: {
         width: 24,
         height: 24,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     txtErro: {

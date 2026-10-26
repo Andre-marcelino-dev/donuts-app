@@ -99,7 +99,7 @@ export default function AlterarSenhaScreen() {
                                     <TextInput
                                         style={alterarSenhaStyle.inputCampo}
                                         placeholder="Senha atual"
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         secureTextEntry={!verSenhaAtual}
                                         value={senhaAtual}
                                         onChangeText={setSenhaAtual}
@@ -129,7 +129,7 @@ export default function AlterarSenhaScreen() {
                                     <TextInput
                                         style={alterarSenhaStyle.inputCampo}
                                         placeholder="Nova senha"
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         secureTextEntry={!verNovaSenha}
                                         value={novaSenha}
                                         onChangeText={setNovaSenha}
@@ -159,7 +159,7 @@ export default function AlterarSenhaScreen() {
                                     <TextInput
                                         style={alterarSenhaStyle.inputCampo}
                                         placeholder="Repita a nova senha"
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         secureTextEntry={!verConfirmarSenha}
                                         value={confirmarSenha}
                                         onChangeText={setConfirmarSenha}

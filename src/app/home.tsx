@@ -288,7 +288,7 @@ export default function HomeScreen() {
                             <View style={homeStyle.buscaPoduto}>
                                 <TextInput style={homeStyle.txtProduto}
                                     placeholder="Buscar produto"
-                                    placeholderTextColor={cores.cinzclaro}
+                                    placeholderTextColor={cores.cinza}
                                     value={busca}
                                     onChangeText={setBusca}
                                     returnKeyType="search"

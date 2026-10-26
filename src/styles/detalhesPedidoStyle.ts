@@ -26,7 +26,7 @@ const detalhesPedidoStyle = StyleSheet.create({
         width: 42,
         height: 42,
         borderRadius: "50%",
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -45,7 +45,7 @@ const detalhesPedidoStyle = StyleSheet.create({
 
     titulo: {
         fontSize: 30,
-        color: cores.preto,
+        color: cores.chocolate,
         textAlign: 'left',
         marginTop: 15,
         fontFamily: fontes.negrito,
@@ -54,7 +54,7 @@ const detalhesPedidoStyle = StyleSheet.create({
     subtitulo: {
         marginTop: 10,
         fontSize: 15,
-        color: cores.cinzclaro,
+        color: cores.cinza,
     },
 
     main: {
@@ -66,7 +66,7 @@ const detalhesPedidoStyle = StyleSheet.create({
     cardInfoPedido: {
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         padding: 15,
@@ -76,7 +76,7 @@ const detalhesPedidoStyle = StyleSheet.create({
     cardEtapas: {
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         padding: 15,
@@ -100,7 +100,7 @@ const detalhesPedidoStyle = StyleSheet.create({
         width: 32,
         height: 32,
         borderRadius: 8,
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 8,
@@ -109,20 +109,20 @@ const detalhesPedidoStyle = StyleSheet.create({
     imgPedido: {
         width: 30,
         height: 30,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     txtNumeroPedido: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
         flexShrink: 1,
     },
 
     txtData: {
         fontSize: 12,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginTop: 4,
         marginLeft: 40,
     },
@@ -130,7 +130,7 @@ const detalhesPedidoStyle = StyleSheet.create({
     badgeStatus: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         borderRadius: 20,
         paddingVertical: 6,
         paddingHorizontal: 12,
@@ -175,7 +175,7 @@ const detalhesPedidoStyle = StyleSheet.create({
         borderRadius: 17,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
     },
 
     circuloEtapaAtual: {
@@ -198,7 +198,7 @@ const detalhesPedidoStyle = StyleSheet.create({
         fontSize: 12,
         lineHeight: 15,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         textAlign: 'center',
         overflow: 'visible',
     },
@@ -208,7 +208,7 @@ const detalhesPedidoStyle = StyleSheet.create({
         fontSize: 12,
         lineHeight: 15,
         fontFamily: fontes.negrito,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         textAlign: 'center',
         overflow: 'visible',
     },
@@ -216,7 +216,7 @@ const detalhesPedidoStyle = StyleSheet.create({
     linhaConectora: {
         width: '10%',
         height: 2,
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         marginTop: 17,
        
     },
@@ -229,7 +229,7 @@ const detalhesPedidoStyle = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         borderRadius: 10,
         paddingVertical: 10,
         marginTop: 18,
@@ -239,19 +239,19 @@ const detalhesPedidoStyle = StyleSheet.create({
         width: 30,
         height: 30,
         marginRight: 8,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     txtPrevisao: {
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     card: {
         width: '100%',
         backgroundColor: cores.branco,
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 15,
         padding: 15,
@@ -273,13 +273,13 @@ const detalhesPedidoStyle = StyleSheet.create({
         width: 30,
         height: 30,
         marginRight: 8,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     labelCard: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     itemResumo: {
@@ -305,20 +305,20 @@ const detalhesPedidoStyle = StyleSheet.create({
     txtItemResumo: {
         fontSize: 13,
         fontFamily: fontes.comum,
-        color: cores.preto,
+        color: cores.chocolate,
         flexShrink: 1,
     },
 
     txtValorItemResumo: {
         fontSize: 13,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     divisor: {
         width: '100%',
         height: 1,
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         marginVertical: 12,
     },
 
@@ -331,13 +331,13 @@ const detalhesPedidoStyle = StyleSheet.create({
     txtLabelResumo: {
         fontSize: 14,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     txtValorResumo: {
         fontSize: 14,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     txtLabelDesconto: {
@@ -361,19 +361,19 @@ const detalhesPedidoStyle = StyleSheet.create({
     txtLabelTotal: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.preto,
+        color: cores.chocolate,
     },
 
     txtValorTotal: {
         fontSize: fontes.fontmedia,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     pillPagamento: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: cores.laranjaclaro,
+        backgroundColor: cores.rosaClaro,
         borderRadius: 20,
         paddingVertical: 6,
         paddingHorizontal: 12,
@@ -383,19 +383,19 @@ const detalhesPedidoStyle = StyleSheet.create({
         width: 30,
         height: 30,
         marginRight: 6,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     txtPagamento: {
         fontSize: 15,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     txtObservacao: {
         fontSize: 15,
         fontFamily: fontes.comum,
-        color: cores.cinzclaro,
+        color: cores.cinza,
         marginTop: 10,
     },
 
@@ -407,7 +407,7 @@ const detalhesPedidoStyle = StyleSheet.create({
     btnCopia: {
         flex: 1,
         flexDirection: 'row',
-        borderColor: cores.laranja,
+        borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 12,
         paddingVertical: 12,
@@ -420,19 +420,19 @@ const detalhesPedidoStyle = StyleSheet.create({
         width: 20,
         height: 20,
         marginRight: 8,
-        tintColor: cores.laranja,
+        tintColor: cores.rosa,
     },
 
     txtCopia: {
         fontSize: 15,
         fontFamily: fontes.negrito,
-        color: cores.laranja,
+        color: cores.rosa,
     },
 
     btnPedirNovamente: {
         flex: 1,
         flexDirection: 'row',
-        backgroundColor: cores.laranja,
+        backgroundColor: cores.rosa,
         borderRadius: 12,
         paddingVertical: 12,
         alignItems: 'center',

@@ -221,7 +221,7 @@ export default function SacolaScreen() {
                                     <TextInput
                                         style={sacolaStyle.inputCupom}
                                         placeholder="Digite seu cupom"
-                                        placeholderTextColor={cores.cinzclaro}
+                                        placeholderTextColor={cores.cinza}
                                         value={cupom}
                                         onChangeText={setCupom}
                                     />

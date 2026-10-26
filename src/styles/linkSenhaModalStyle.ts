@@ -4,7 +4,7 @@ import { cores } from "./variaveis";
 const linkSenhaModalStyle = StyleSheet.create({
   sobrepor: {
     flex: 1,
-    backgroundColor: cores.preto,
+    backgroundColor: cores.chocolate,
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
@@ -17,7 +17,7 @@ const linkSenhaModalStyle = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 20,
     paddingVertical: 24,
-    shadowColor: cores.preto,
+    shadowColor: cores.chocolate,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.25,
     shadowRadius: 10,
@@ -28,20 +28,20 @@ const linkSenhaModalStyle = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold",
     textAlign: "center",
-    color: cores.preto,
+    color: cores.chocolate,
     marginBottom: 16,
   },
 
   texto: {
     fontSize: 17,
-    color: cores.cinzclaro,
+    color: cores.cinza,
     lineHeight: 20,
     textAlign: "justify",
   },
 
   textoValidade: {
     fontSize: 14,
-    color: cores.laranja,
+    color: cores.rosa,
     fontWeight: "bold",
     textAlign: "center",
     marginTop: 16,
@@ -51,7 +51,7 @@ const linkSenhaModalStyle = StyleSheet.create({
     width: "60%",
     height: 50,
     marginTop: 24,
-    backgroundColor: cores.laranja,
+    backgroundColor: cores.rosa,
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
@@ -62,7 +62,7 @@ const linkSenhaModalStyle = StyleSheet.create({
   },
 
   txtOk: {
-    color: cores.preto,
+    color: cores.chocolate,
     fontSize: 18,
     fontWeight: "bold",
   },
