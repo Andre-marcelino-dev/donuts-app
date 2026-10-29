@@ -1,4 +1,4 @@
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -16,12 +16,79 @@ import {
 
 
 import globalStyle from "@/styles/globalStyle";
-import LinkSenhaModal from "@/components/linkSenhaModal";
 import redefinirSenhaStyle from "@/styles/redefinirSenhaStyle";
+import { pedirCodigoSenha, redefinirSenha } from "@/utils/auth";
+import { avisar } from "@/utils/avisar";
 
 export default function RedefinirSenhaScreen() {
- const [verSenha, setVerSenha] = useState(false);
+  // O e-mail vem da tela Esqueci minha senha
+  const params = useLocalSearchParams<{ email?: string }>();
+
+  const [verSenha, setVerSenha] = useState(false);
   const [verConfirmarSenha, setVerConfirmarSenha] = useState(false);
+
+  const [email, setEmail] = useState(params.email ?? "");
+  const [codigo, setCodigo] = useState("");
+  const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
+  const [erro, setErro] = useState("");
+  const [mensagem, setMensagem] = useState("");
+  const [carregando, setCarregando] = useState(false);
+
+  async function salvarSenha() {
+    setMensagem("");
+    const emailLimpo = email.trim();
+    if (!/^\S+@\S+\.\S+$/.test(emailLimpo)) {
+      setErro("Informe um e-mail válido.");
+      return;
+    }
+    if (!/^\d{6}$/.test(codigo)) {
+      setErro("Digite o código de 6 números que chegou no e-mail.");
+      return;
+    }
+    if (senha.length < 6) {
+      setErro("A senha precisa ter pelo menos 6 caracteres.");
+      return;
+    }
+    if (senha !== confirmarSenha) {
+      setErro("As senhas não conferem.");
+      return;
+    }
+
+    setErro("");
+    setCarregando(true);
+    try {
+      const resposta = await redefinirSenha({
+        email: emailLimpo,
+        codigo,
+        senha,
+        senha_confirmation: confirmarSenha,
+      });
+      avisar(resposta);
+      router.replace("/");
+    } catch (e) {
+      setErro(e instanceof Error ? e.message : "Não foi possível salvar a senha.");
+    } finally {
+      setCarregando(false);
+    }
+  }
+
+  async function reenviarCodigo() {
+    setMensagem("");
+    const emailLimpo = email.trim();
+    if (!/^\S+@\S+\.\S+$/.test(emailLimpo)) {
+      setErro("Informe um e-mail válido.");
+      return;
+    }
+
+    setErro("");
+    try {
+      await pedirCodigoSenha(emailLimpo);
+      setMensagem("Enviamos um novo código. O anterior não vale mais.");
+    } catch (e) {
+      setErro(e instanceof Error ? e.message : "Não foi possível enviar o código.");
+    }
+  }
 
   return (
     <View style={globalStyle.container}>
@@ -41,21 +108,57 @@ export default function RedefinirSenhaScreen() {
                 Redefinir senha
               </Text>
               <Text style={redefinirSenhaStyle.subtitulo}>
-              Crie uma nova senha para acessar
-                     sua conta
+                Digite o código que enviamos para o seu e-mail e crie uma nova senha
               </Text>
 
               <View style={redefinirSenhaStyle.form}>
+                {/* Só aparece se a tela foi aberta sem o e-mail */}
+                {!params.email && (
+                  <View style={redefinirSenhaStyle.input}>
+                    <Image
+                      source={require("@/assets/images/img/email.png")}
+                      style={redefinirSenhaStyle.icone}
+                    />
+                    <TextInput
+                      placeholder="E-mail"
+                      placeholderTextColor="#888888"
+                      keyboardType="email-address"
+                      autoCapitalize="none"
+                      style={redefinirSenhaStyle.TextInput}
+                      value={email}
+                      onChangeText={setEmail}
+                    />
+                  </View>
+                )}
+
                 <View style={redefinirSenhaStyle.input}>
                   <Image
                     source={require("@/assets/images/img/senha.png")}
                     style={redefinirSenhaStyle.icone}
                   />
                   <TextInput
-                    placeholder="Senha"
+                    placeholder="Código de 6 números"
+                    placeholderTextColor="#888888"
+                    keyboardType="number-pad"
+                    maxLength={6}
+                    style={redefinirSenhaStyle.TextInput}
+                    value={codigo}
+                    onChangeText={(texto) => setCodigo(texto.replace(/\D/g, ""))}
+                  />
+                </View>
+
+                <View style={redefinirSenhaStyle.input}>
+                  <Image
+                    source={require("@/assets/images/img/senha.png")}
+                    style={redefinirSenhaStyle.icone}
+                  />
+                  <TextInput
+                    placeholder="Nova senha"
                     placeholderTextColor="#888888"
                     style={redefinirSenhaStyle.TextInput}
                     secureTextEntry={!verSenha}
+                    value={senha}
+                    onChangeText={setSenha}
                   />
 
                   <Pressable
@@ -79,10 +182,12 @@ export default function RedefinirSenhaScreen() {
                     style={redefinirSenhaStyle.icone}
                   />
                   <TextInput
-                    placeholder="Confirmar Senha"
+                    placeholder="Confirmar nova senha"
                     placeholderTextColor="#888888"
                     style={redefinirSenhaStyle.TextInput}
                     secureTextEntry={!verConfirmarSenha}
+                    value={confirmarSenha}
+                    onChangeText={setConfirmarSenha}
                   />
 
                   <Pressable
@@ -100,15 +205,29 @@ export default function RedefinirSenhaScreen() {
                   </Pressable>
                 </View>
 
+                {erro !== "" && <Text style={redefinirSenhaStyle.txtErro}>{erro}</Text>}
+                {mensagem !== "" && (
+                  <Text style={redefinirSenhaStyle.txtMensagem}>{mensagem}</Text>
+                )}
 
                 <Pressable
                   style={({ pressed }) => [
                     redefinirSenhaStyle.btnSalvar,
                     pressed && redefinirSenhaStyle.btnSalvarPressed,
+                    carregando && { opacity: 0.6 },
                   ]}
-               
+                  onPress={salvarSenha}
+                  disabled={carregando}
                 >
-                  <Text style={redefinirSenhaStyle.txtVoltar}>Salvar senha</Text>
+                  <Text style={redefinirSenhaStyle.txtVoltar}>
+                    {carregando ? "Salvando..." : "Salvar senha"}
+                  </Text>
+                </Pressable>
+
+                <Pressable onPress={reenviarCodigo}>
+                  <Text style={redefinirSenhaStyle.txtReenviar}>
+                    Não recebeu? Enviar outro código
+                  </Text>
                 </Pressable>
 
                 <Pressable
@@ -126,7 +245,7 @@ export default function RedefinirSenhaScreen() {
             </View>
           </ScrollView>
 
-        
+
         </SafeAreaView>
       </ImageBackground>
     </View>

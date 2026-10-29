@@ -94,6 +94,13 @@ const esqueciSenhaStyle = StyleSheet.create({
   btnVoltarPressed: {
     backgroundColor: "#e07a85",
   },
+
+  txtErro: {
+    color: "#d32f2f",
+    fontSize: 14,
+    textAlign: "center",
+    marginBottom: 10,
+  },
 });
 
 export default esqueciSenhaStyle;

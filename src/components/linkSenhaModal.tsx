@@ -20,15 +20,16 @@ export default function LinkSenhaModal({
     >
       <View style={linkSenhaModalStyle.sobrepor}>
         <View style={linkSenhaModalStyle.conteudo}>
-          <Text style={linkSenhaModalStyle.titulo}>Enviar link</Text>
+          <Text style={linkSenhaModalStyle.titulo}>Código enviado</Text>
 
           <Text style={linkSenhaModalStyle.texto}>
             Caso este e-mail esteja cadastrado em nosso sistema, você
-            receberá um link de redefinição por e-mail.
+            receberá um código de 6 números por e-mail. Confira também a
+            caixa de spam.
           </Text>
 
           <Text style={linkSenhaModalStyle.textoValidade}>
-            Validade do link (10 minutos).
+            Validade do código: 30 minutos.
           </Text>
 
           <Pressable

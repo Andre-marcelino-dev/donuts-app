@@ -176,6 +176,29 @@ const redefinirSenhaStyle = StyleSheet.create({
   btnVoltarPressed: {
     backgroundColor: "#e07a85",
   },
+
+  txtErro: {
+    color: "#d32f2f",
+    fontSize: 14,
+    textAlign: "center",
+    marginBottom: 10,
+  },
+
+  txtMensagem: {
+    color: "#2e7d32",
+    fontSize: 14,
+    textAlign: "center",
+    marginBottom: 10,
+  },
+
+  txtReenviar: {
+    color: cores.rosa,
+    fontFamily: fontes.negrito,
+    fontSize: 13,
+    textAlign: "center",
+    textDecorationLine: "underline",
+    marginVertical: 12,
+  },
 });
 
 export default redefinirSenhaStyle;

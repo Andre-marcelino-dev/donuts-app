@@ -16,9 +16,32 @@ import {
 import esqueciSenhaStyle from "@/styles/esqueciSenhaStyle";
 import globalStyle from "@/styles/globalStyle";
 import LinkSenhaModal from "@/components/linkSenhaModal";
+import { pedirCodigoSenha } from "@/utils/auth";
 
 export default function EsqueciSenhaScreen() {
   const [modalLinkSenha, setModalLinkSenha] = useState(false);
+  const [email, setEmail] = useState("");
+  const [erro, setErro] = useState("");
+  const [carregando, setCarregando] = useState(false);
+
+  async function enviarCodigo() {
+    const emailLimpo = email.trim();
+    if (!/^\S+@\S+\.\S+$/.test(emailLimpo)) {
+      setErro("Informe um e-mail válido.");
+      return;
+    }
+
+    setErro("");
+    setCarregando(true);
+    try {
+      await pedirCodigoSenha(emailLimpo);
+      setModalLinkSenha(true);
+    } catch (e) {
+      setErro(e instanceof Error ? e.message : "Não foi possível enviar o código.");
+    } finally {
+      setCarregando(false);
+    }
+  }
 
   return (
     <View style={globalStyle.container}>
@@ -38,7 +61,7 @@ export default function EsqueciSenhaScreen() {
                 Esqueci minha senha
               </Text>
               <Text style={esqueciSenhaStyle.subtitulo}>
-                Informe seu e-mail para receber {'\n'} o link de redefinição
+                Informe seu e-mail para receber {'\n'} o código de redefinição
               </Text>
 
               <View style={esqueciSenhaStyle.form}>
@@ -54,17 +77,25 @@ export default function EsqueciSenhaScreen() {
                     keyboardType="email-address"
                     autoCapitalize="none"
                     style={esqueciSenhaStyle.TextInput}
+                    value={email}
+                    onChangeText={setEmail}
                   />
                 </View>
+
+                {erro !== "" && <Text style={esqueciSenhaStyle.txtErro}>{erro}</Text>}
 
                 <Pressable
                   style={({ pressed }) => [
                     esqueciSenhaStyle.btnEnviar,
                     pressed && esqueciSenhaStyle.btnEnviarPressed,
+                    carregando && { opacity: 0.6 },
                   ]}
-                  onPress={() => setModalLinkSenha(true)}
+                  onPress={enviarCodigo}
+                  disabled={carregando}
                 >
-                  <Text style={esqueciSenhaStyle.txtEnviar}>Enviar link</Text>
+                  <Text style={esqueciSenhaStyle.txtEnviar}>
+                    {carregando ? "Enviando..." : "Enviar código"}
+                  </Text>
                 </Pressable>
 
                 <Pressable
@@ -85,8 +116,11 @@ export default function EsqueciSenhaScreen() {
           <LinkSenhaModal
             visible={modalLinkSenha}
             onClose={() => {
-                router.navigate("/");
                 setModalLinkSenha(false);
+                router.navigate({
+                  pathname: "/redefinir-senha",
+                  params: { email: email.trim() },
+                });
             }}
           />
         </SafeAreaView>

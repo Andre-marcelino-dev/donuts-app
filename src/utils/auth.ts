@@ -100,6 +100,50 @@ export async function fazerCadastro(dados: DadosCadastro): Promise<Cliente> {
     return json.data.cliente;
 }
 
+// Envia para a API o pedido de código para redefinir a senha (chega por e-mail).
+// Devolve a mensagem da API; se der errado, lança um erro com a mensagem.
+export async function pedirCodigoSenha(email: string): Promise<string> {
+    const resposta = await fetch(`${API_BASE_URL}/api/v1/auth/esqueci-senha`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+    });
+
+    const json = await resposta.json().catch(() => null);
+    if (!resposta.ok || !json?.success) {
+        throw new Error(json?.message ?? `Erro ${resposta.status} ao enviar o código.`);
+    }
+    return json.message;
+}
+
+export type DadosRedefinirSenha = {
+    email: string;
+    codigo: string;
+    senha: string;
+    senha_confirmation: string;
+};
+
+// Troca a senha com o código recebido por e-mail.
+export async function redefinirSenha(dados: DadosRedefinirSenha): Promise<string> {
+    const resposta = await fetch(`${API_BASE_URL}/api/v1/auth/redefinir-senha`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dados),
+    });
+
+    const json = await resposta.json().catch(() => null);
+    if (!resposta.ok || !json?.success) {
+        throw new Error(json?.message ?? `Erro ${resposta.status} ao redefinir a senha.`);
+    }
+    return json.message;
+}
+
 export async function pegarToken() {
     return ler(CHAVE_TOKEN);
 }
