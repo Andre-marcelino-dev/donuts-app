@@ -39,6 +39,32 @@ const linkSenhaModalStyle = StyleSheet.create({
     textAlign: "justify",
   },
 
+  textoCentro: {
+    fontSize: 16,
+    color: cores.cinza,
+    lineHeight: 22,
+    textAlign: "center",
+  },
+
+  // Círculo verde com o ✓ da janela de sucesso
+  iconeSucesso: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    backgroundColor: "#e8f5e9",
+    borderWidth: 2,
+    borderColor: "#2e7d32",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 14,
+  },
+
+  txtIconeSucesso: {
+    fontSize: 32,
+    fontWeight: "bold",
+    color: "#2e7d32",
+  },
+
   textoValidade: {
     fontSize: 14,
     color: cores.rosa,

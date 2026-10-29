@@ -17,8 +17,8 @@ import {
 
 import globalStyle from "@/styles/globalStyle";
 import redefinirSenhaStyle from "@/styles/redefinirSenhaStyle";
+import SucessoModal from "@/components/sucessoModal";
 import { pedirCodigoSenha, redefinirSenha } from "@/utils/auth";
-import { avisar } from "@/utils/avisar";
 
 export default function RedefinirSenhaScreen() {
   // O e-mail vem da tela Esqueci minha senha
@@ -34,6 +34,7 @@ export default function RedefinirSenhaScreen() {
   const [erro, setErro] = useState("");
   const [mensagem, setMensagem] = useState("");
   const [carregando, setCarregando] = useState(false);
+  const [senhaAlterada, setSenhaAlterada] = useState(false);
 
   async function salvarSenha() {
     setMensagem("");
@@ -58,14 +59,13 @@ export default function RedefinirSenhaScreen() {
     setErro("");
     setCarregando(true);
     try {
-      const resposta = await redefinirSenha({
+      await redefinirSenha({
         email: emailLimpo,
         codigo,
         senha,
         senha_confirmation: confirmarSenha,
       });
-      avisar(resposta);
-      router.replace("/");
+      setSenhaAlterada(true);
     } catch (e) {
       setErro(e instanceof Error ? e.message : "Não foi possível salvar a senha.");
     } finally {
@@ -245,7 +245,16 @@ export default function RedefinirSenhaScreen() {
             </View>
           </ScrollView>
 
-
+          <SucessoModal
+            visible={senhaAlterada}
+            titulo="Senha alterada"
+            texto="Sua nova senha já está valendo. Por segurança, encerramos os acessos anteriores. Entre novamente com a nova senha."
+            textoBotao="Ir para o login"
+            onClose={() => {
+              setSenhaAlterada(false);
+              router.replace("/");
+            }}
+          />
         </SafeAreaView>
       </ImageBackground>
     </View>
