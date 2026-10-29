@@ -18,6 +18,8 @@ O projeto nasceu como cópia do The Gusta / Confeitaria DaVilla. Por isso muitas
   - Sacola: card "Entrega em" reorganizado.
   - Janelas no visual do app no lugar do alerta do navegador (`SucessoModal` e o `avisar()`).
   - Termos de uso: a caixinha e o texto "Aceito os" marcam juntos; botão "Li e aceito" na janela dos termos.
+  - **Localização da loja** salva no painel (Configurações da loja): `-23.5109284`, `-46.4156827` (Rua Augusto Fiordelice, Parque Santa Rita). Testado: CEP 08161-540 → Zona 1 pelo nome do bairro; CEP 08410-070 (Vila Princesa Isabel) → 4,2 km → Zona 2, R$ 8,00. A medida por distância está funcionando.
+- **Combinado com o André (29/10):** WhatsApp, endereço da loja e zonas de entrega estão com **dados de teste de propósito**. Só trocar quando ele avisar que o site e o app estão prontos.
 - **Falta:** ver o item 8.
 
 ---
@@ -167,8 +169,10 @@ Janelas em `src/components/`: `sucessoModal.tsx` (sucesso com ✓), `avisoHost.t
 
 ## 8. O que falta
 
-1. **WhatsApp e endereço da loja:** ainda são os do The Gusta (`11 98816-1211`, Rua Augusto Fiordelice, 310). Colocar os do Cantinho Donuts no `.env` (`LOJA_WHATSAPP`, `LOJA_ENDERECO`, `LOJA_BAIRRO`, `LOJA_CIDADE`, `LOJA_CEP`).
-2. **No painel:** trocar os valores de exemplo das zonas de entrega pelos reais.
+Os itens 1 e 2 esperam o André avisar (por enquanto são dados de teste).
+
+1. **WhatsApp e endereço da loja:** hoje `11 98816-1211` e Rua Augusto Fiordelice, 310 (padrão de `config/services.php`). Quando ele passar os reais, montar as linhas do `.env` (`LOJA_WHATSAPP`, `LOJA_ENDERECO`, `LOJA_BAIRRO`, `LOJA_CIDADE`, `LOJA_CEP`). O botão "Fazer meu pedido" da página Região usa esse WhatsApp.
+2. **No painel:** trocar os valores de exemplo das zonas de entrega (km, taxa, prazo, bairros) pelos reais.
 3. **Opcional:** gravar no banco a data em que o cliente aceitou os termos de uso.
 4. **Backend com mudanças sem commit** (imagem das categorias, em `~/dev/senac/cantinho-donuts`): terminar, fazer o commit e mandar para a Locaweb.
 
