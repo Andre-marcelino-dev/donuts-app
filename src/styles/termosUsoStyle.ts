@@ -68,6 +68,13 @@ const termosUsoStyle = StyleSheet.create({
     fontSize: 15,
     fontWeight: "bold",
   },
+
+  txtFechar: {
+    color: "#6e5a50",
+    fontSize: 14,
+    textDecorationLine: "underline",
+    marginTop: 14,
+  },
 });
 
 export default termosUsoStyle;

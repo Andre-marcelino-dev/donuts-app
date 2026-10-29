@@ -210,29 +210,33 @@ export default function CadClienteScreen() {
                 </View>
 
                 <View style={cadClienteStyle.termosUso}>
+                  {/* A caixinha e o texto "Aceito os" marcam juntos */}
                   <Pressable
-                    style={cadClienteStyle.btnTermos}
+                    style={cadClienteStyle.areaAceite}
                     onPress={() => setVerAceitarTermos((current) => !current)}
+                    hitSlop={8}
                   >
-                    <View
+                    <View style={cadClienteStyle.btnTermos}>
+                      <View
+                        style={[
+                          cadClienteStyle.checkTermos,
+                          AceitarTermos && cadClienteStyle.checkTermosAtivo,
+                        ]}
+                      >
+                        {AceitarTermos && (
+                          <Text style={cadClienteStyle.checkOK}>✓</Text>
+                        )}
+                      </View>
+                    </View>
+                    <Text
                       style={[
-                        cadClienteStyle.checkTermos,
-                        AceitarTermos && cadClienteStyle.checkTermosAtivo,
+                        cadClienteStyle.txtTermos,
+                        AceitarTermos && cadClienteStyle.termoAceito,
                       ]}
                     >
-                      {AceitarTermos && (
-                        <Text style={cadClienteStyle.checkOK}>✓</Text>
-                      )}
-                    </View>
+                      Aceito os{" "}
+                    </Text>
                   </Pressable>
-                  <Text
-                    style={[
-                      cadClienteStyle.txtTermos,
-                      AceitarTermos && cadClienteStyle.termoAceito,
-                    ]}
-                  >
-                    Aceito os{" "}
-                  </Text>
                   <Pressable onPress={() => setModalTermosUso(true)}>
                     <Text style={cadClienteStyle.linkTermos}>
                       Termos de uso
@@ -277,7 +281,11 @@ export default function CadClienteScreen() {
 
           <TermosUsoModal
           visible={modalTermosUso}
-          onClose={() => setModalTermosUso(false)}          
+          onClose={() => setModalTermosUso(false)}
+          onAceitar={() => {
+            setVerAceitarTermos(true);
+            setModalTermosUso(false);
+          }}
           />
 
         </SafeAreaView>

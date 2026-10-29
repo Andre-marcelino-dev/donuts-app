@@ -73,6 +73,11 @@ const cadClienteStyle = StyleSheet.create({
     width: "100%",
   },
 
+  areaAceite: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
   btnTermos: {
     width: 20,
     height: 20,

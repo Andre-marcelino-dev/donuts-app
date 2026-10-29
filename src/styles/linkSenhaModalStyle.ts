@@ -65,6 +65,25 @@ const linkSenhaModalStyle = StyleSheet.create({
     color: "#2e7d32",
   },
 
+  // Círculo rosa com o ! da janela de aviso
+  iconeAviso: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    backgroundColor: cores.rosaClaro,
+    borderWidth: 2,
+    borderColor: cores.rosa,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 14,
+  },
+
+  txtIconeAviso: {
+    fontSize: 32,
+    fontWeight: "bold",
+    color: cores.rosa,
+  },
+
   textoValidade: {
     fontSize: 14,
     color: cores.rosa,

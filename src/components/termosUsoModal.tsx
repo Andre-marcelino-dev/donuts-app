@@ -6,11 +6,14 @@ import globalStyle from "@/styles/globalStyle";
 interface TermosUsoModalProps {
   visible: boolean;
   onClose: () => void;
+  // Se vier, aparece o botão "Li e aceito", que já marca o aceite
+  onAceitar?: () => void;
 }
 
 export default function TermosUsoModal({
   visible,
   onClose,
+  onAceitar,
 }: TermosUsoModalProps) {
   return (
     <Modal
@@ -39,9 +42,20 @@ export default function TermosUsoModal({
             <Text style={termosUsoStyle.texto}>As formas de pagamento são apresentadas durante a finalização do pedido. O usuário é responsavel pela veracidade das informações fornecidas para a realização do pagamento.</Text>       
           </ScrollView>
 
-          <Pressable style={termosUsoStyle.btnEntendi} onPress={onClose}>
-            <Text style={termosUsoStyle.txtEntendi}>Entendi</Text>
-          </Pressable>
+          {onAceitar ? (
+            <>
+              <Pressable style={termosUsoStyle.btnEntendi} onPress={onAceitar}>
+                <Text style={termosUsoStyle.txtEntendi}>Li e aceito</Text>
+              </Pressable>
+              <Pressable onPress={onClose} hitSlop={8}>
+                <Text style={termosUsoStyle.txtFechar}>Fechar</Text>
+              </Pressable>
+            </>
+          ) : (
+            <Pressable style={termosUsoStyle.btnEntendi} onPress={onClose}>
+              <Text style={termosUsoStyle.txtEntendi}>Entendi</Text>
+            </Pressable>
+          )}
         </View>
       </View>
     </Modal>
