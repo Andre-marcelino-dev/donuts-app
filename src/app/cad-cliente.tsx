@@ -17,6 +17,7 @@ import cadClienteStyle from "@/styles/cadClienteStyle";
 import globalStyle from "@/styles/globalStyle";
 
 import TermosUsoModal from "@/components/termosUsoModal";
+import { fazerCadastro } from "@/utils/auth";
 
 export default function CadClienteScreen() {
   const [verSenha, setVerSenha] = useState(false);
@@ -24,6 +25,59 @@ export default function CadClienteScreen() {
   const [AceitarTermos, setVerAceitarTermos] = useState(false);
 
   const [modalTermosUso, setModalTermosUso] = useState(false);
+
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
+  const [erro, setErro] = useState("");
+  const [carregando, setCarregando] = useState(false);
+
+  async function criarConta() {
+    const emailLimpo = email.trim();
+    if (!nome.trim() || !emailLimpo || !telefone.trim() || !senha || !confirmarSenha) {
+      setErro("Preencha todos os campos.");
+      return;
+    }
+    if (!/^\S+@\S+\.\S+$/.test(emailLimpo)) {
+      setErro("Informe um e-mail válido.");
+      return;
+    }
+    if (telefone.replace(/\D/g, "").length < 10) {
+      setErro("Informe o telefone com DDD, ex.: 11988887777.");
+      return;
+    }
+    if (senha.length < 6) {
+      setErro("A senha precisa ter pelo menos 6 caracteres.");
+      return;
+    }
+    if (senha !== confirmarSenha) {
+      setErro("As senhas não conferem.");
+      return;
+    }
+    if (!AceitarTermos) {
+      setErro("Aceite os Termos de uso para continuar.");
+      return;
+    }
+
+    setErro("");
+    setCarregando(true);
+    try {
+      await fazerCadastro({
+        nome: nome.trim(),
+        email: emailLimpo,
+        telefone: telefone.trim(),
+        senha,
+        senha_confirmation: confirmarSenha,
+      });
+      router.replace("/home");
+    } catch (e) {
+      setErro(e instanceof Error ? e.message : "Não foi possível criar a conta.");
+    } finally {
+      setCarregando(false);
+    }
+  }
 
   return (
     <View style={globalStyle.container}>
@@ -55,6 +109,9 @@ export default function CadClienteScreen() {
                   <TextInput
                     placeholder="Nome completo"
                     placeholderTextColor="#888888"
+                    value={nome}
+                    onChangeText={setNome}
+                    maxLength={50}
                     style={cadClienteStyle.TextInput}
                   />
                 </View>
@@ -70,6 +127,9 @@ export default function CadClienteScreen() {
                     placeholderTextColor="#888888"
                     keyboardType="email-address"
                     autoCapitalize="none"
+                    value={email}
+                    onChangeText={setEmail}
+                    maxLength={80}
                     style={cadClienteStyle.TextInput}
                   />
                 </View>
@@ -84,6 +144,9 @@ export default function CadClienteScreen() {
                     placeholder="Telefone"
                     placeholderTextColor="#888888"
                     keyboardType="phone-pad"
+                    value={telefone}
+                    onChangeText={setTelefone}
+                    maxLength={14}
                     style={cadClienteStyle.TextInput}
                   />
                 </View>
@@ -98,6 +161,8 @@ export default function CadClienteScreen() {
                     placeholderTextColor="#888888"
                     style={cadClienteStyle.TextInput}
                     secureTextEntry={!verSenha}
+                    value={senha}
+                    onChangeText={setSenha}
                   />
 
                   <Pressable
@@ -125,6 +190,8 @@ export default function CadClienteScreen() {
                     placeholderTextColor="#888888"
                     style={cadClienteStyle.TextInput}
                     secureTextEntry={!verConfirmarSenha}
+                    value={confirmarSenha}
+                    onChangeText={setConfirmarSenha}
                   />
 
                   <Pressable
@@ -173,13 +240,20 @@ export default function CadClienteScreen() {
                   </Pressable>
                 </View>
 
+                {erro !== "" && <Text style={cadClienteStyle.txtErro}>{erro}</Text>}
+
                 <Pressable
                   style={({ pressed }) => [
                     cadClienteStyle.btnEntrar,
                     pressed && cadClienteStyle.btnEntrarPressed,
+                    carregando && { opacity: 0.6 },
                   ]}
+                  onPress={criarConta}
+                  disabled={carregando}
                 >
-                  <Text style={cadClienteStyle.txtEntrar}>Criar Conta</Text>
+                  <Text style={cadClienteStyle.txtEntrar}>
+                    {carregando ? "Criando..." : "Criar Conta"}
+                  </Text>
                 </Pressable>
 
                 <View style={cadClienteStyle.Separador}>

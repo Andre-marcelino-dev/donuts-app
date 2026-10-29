@@ -68,6 +68,38 @@ export async function fazerLogin(email: string, senha: string): Promise<Cliente>
     return json.data.cliente;
 }
 
+export type DadosCadastro = {
+    nome: string;
+    email: string;
+    telefone: string;
+    senha: string;
+    senha_confirmation: string;
+};
+
+// Cria a conta na API e já deixa o cliente logado (guarda token e dados).
+// Se der errado, lança um erro com a mensagem da API para mostrar na tela.
+export async function fazerCadastro(dados: DadosCadastro): Promise<Cliente> {
+    const resposta = await fetch(`${API_BASE_URL}/api/v1/auth/cadastro`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...dados, device_name: `app-${Platform.OS}` }),
+    });
+
+    const json = await resposta.json().catch(() => null);
+
+    if (!resposta.ok || !json?.success) {
+        // No erro de validação (422) o Laravel manda a primeira mensagem em "message"
+        throw new Error(json?.message ?? `Erro ${resposta.status} ao criar a conta.`);
+    }
+
+    await salvar(CHAVE_TOKEN, json.data.token);
+    await salvar(CHAVE_CLIENTE, JSON.stringify(json.data.cliente));
+    return json.data.cliente;
+}
+
 export async function pegarToken() {
     return ler(CHAVE_TOKEN);
 }

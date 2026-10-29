@@ -4,7 +4,9 @@
 
 //const SERVIDOR = "https://ctrlaltdev.tipi5.smpsistema.com.br/confeitaria"; // Servidor do The Gusta
 
-const SERVIDOR = "http://192.168.0.97:8082"; // Cantinho Donuts local (IP do PC + porta do Docker)
+//const SERVIDOR = "http://192.168.0.97:8082"; // Cantinho Donuts local (IP do PC + porta do Docker)
+
+const SERVIDOR = "https://confeitaria.adminfo.dev.br"; // Cantinho Donuts em produção (Locaweb)
  
 const VERSAO_API = "v1";
  

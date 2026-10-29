@@ -175,6 +175,13 @@ const cadClienteStyle = StyleSheet.create({
   btnCriarContaPressed: {
     backgroundColor: cores.rosa,
   },
+
+  txtErro: {
+    color: "#d32f2f",
+    fontSize: 14,
+    textAlign: "center",
+    marginBottom: 10,
+  },
 });
 
 export default cadClienteStyle;
