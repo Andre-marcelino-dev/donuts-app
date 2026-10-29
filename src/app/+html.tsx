@@ -16,6 +16,15 @@ export default function Root({ children }: PropsWithChildren) {
                     content="width=device-width, initial-scale=1, shrink-to-fit=no"
                 />
                 <meta name="google" content="notranslate" />
+
+                {/* Instalar como app (PWA): nome, ícone e cores ficam no public/manifest.json */}
+                <link rel="manifest" href="/manifest.json" />
+                <meta name="theme-color" content="#e07a85" />
+                <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-title" content="Cantinho Donuts" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="default" />
                 <ScrollViewStyleReset />
             </head>
             <body>{children}</body>

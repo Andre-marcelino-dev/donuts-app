@@ -1,5 +1,5 @@
 import { router, useFocusEffect } from "expo-router";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import {
@@ -17,12 +17,31 @@ import configuracoesStyle from "@/styles/configuracoesStyle";
 import Footer from "@/components/footer";
 import { voltar } from "@/utils/navegacao";
 import { buscarClienteLogado, Cliente, fazerLogout, urlFotoCliente } from "@/utils/auth";
+import { instalarApp, ModoInstalacao, modoInstalacao, ouvirInstalacao } from "@/utils/instalarApp";
 
 export default function ConfiguracoesScreen() {
     // Janelinha "Deseja sair da conta?"
     const [modalSair, setModalSair] = useState(false);
     const [saindo, setSaindo] = useState(false);
     const [cliente, setCliente] = useState<Cliente | null>(null);
+
+    // Instalar o app pelo navegador (PWA)
+    const [modoInstalar, setModoInstalar] = useState<ModoInstalacao | null>(null);
+    const [modalInstalar, setModalInstalar] = useState(false);
+
+    useEffect(() => {
+        setModoInstalar(modoInstalacao());
+        return ouvirInstalacao(() => setModoInstalar(modoInstalacao()));
+    }, []);
+
+    // Chrome/Android abre a janela de instalação; nos outros, mostra como fazer
+    async function tocarInstalar() {
+        if (modoInstalar === "chrome") {
+            await instalarApp();
+        } else {
+            setModalInstalar(true);
+        }
+    }
 
     // Busca de novo sempre que a tela aparece (ex.: ao voltar do Editar perfil com nome ou foto novos)
     useFocusEffect(
@@ -179,14 +198,26 @@ export default function ConfiguracoesScreen() {
                                             Instalar aplicativo
                                         </Text>
                                         <Text style={configuracoesStyle.descricaoItem}>
-                                            Adicione o app à sua tela inicial
+                                            {modoInstalar === "instalado"
+                                                ? "O app já está na sua tela inicial"
+                                                : "Adicione o app à sua tela inicial"}
                                         </Text>
                                     </View>
-                                    <Pressable style={configuracoesStyle.btnInstalar}>
-                                        <Text style={configuracoesStyle.txtBtnInstalar}>
-                                            Instalar
-                                        </Text>
-                                    </Pressable>
+                                    {modoInstalar === "instalado" ? (
+                                        <Text style={configuracoesStyle.txtInstalado}>✓ Instalado</Text>
+                                    ) : (
+                                        <Pressable
+                                            style={({ pressed }) => [
+                                                configuracoesStyle.btnInstalar,
+                                                pressed && configuracoesStyle.btnPressionado,
+                                            ]}
+                                            onPress={tocarInstalar}
+                                        >
+                                            <Text style={configuracoesStyle.txtBtnInstalar}>
+                                                Instalar
+                                            </Text>
+                                        </Pressable>
+                                    )}
                                 </View>
                             </View>
 
@@ -287,6 +318,67 @@ export default function ConfiguracoesScreen() {
                                             disabled={saindo}
                                         >
                                             <Text style={configuracoesStyle.txtFicar}>Cancelar</Text>
+                                        </Pressable>
+                                    </Pressable>
+                                </Pressable>
+                            </Modal>
+
+                            {/* Como instalar quando o navegador não abre a janela sozinho */}
+                            <Modal
+                                visible={modalInstalar}
+                                transparent
+                                animationType="fade"
+                                onRequestClose={() => setModalInstalar(false)}
+                            >
+                                <Pressable
+                                    style={configuracoesStyle.modalFundo}
+                                    onPress={() => setModalInstalar(false)}
+                                >
+                                    <Pressable style={configuracoesStyle.modalCaixa} onPress={() => {}}>
+                                        <View style={configuracoesStyle.modalAlca} />
+
+                                        <Text style={configuracoesStyle.modalTitulo}>Instalar o app</Text>
+
+                                        {modoInstalar === "iphone" ? (
+                                            <View style={configuracoesStyle.listaPassos}>
+                                                <Text style={configuracoesStyle.txtPasso}>
+                                                    1. Abra este site no <Text style={configuracoesStyle.txtPassoDestaque}>Safari</Text>.
+                                                </Text>
+                                                <Text style={configuracoesStyle.txtPasso}>
+                                                    2. Toque em <Text style={configuracoesStyle.txtPassoDestaque}>Compartilhar</Text> (o quadrado com a seta para cima).
+                                                </Text>
+                                                <Text style={configuracoesStyle.txtPasso}>
+                                                    3. Role e toque em <Text style={configuracoesStyle.txtPassoDestaque}>Adicionar à Tela de Início</Text>.
+                                                </Text>
+                                                <Text style={configuracoesStyle.txtPasso}>
+                                                    4. Toque em <Text style={configuracoesStyle.txtPassoDestaque}>Adicionar</Text>. O ícone do Cantinho Donuts aparece na sua tela.
+                                                </Text>
+                                            </View>
+                                        ) : (
+                                            <View style={configuracoesStyle.listaPassos}>
+                                                <Text style={configuracoesStyle.txtPasso}>
+                                                    1. Abra o menu do navegador (os <Text style={configuracoesStyle.txtPassoDestaque}>três pontinhos</Text>, no canto da tela).
+                                                </Text>
+                                                <Text style={configuracoesStyle.txtPasso}>
+                                                    2. Toque em <Text style={configuracoesStyle.txtPassoDestaque}>Instalar app</Text> ou <Text style={configuracoesStyle.txtPassoDestaque}>Adicionar à tela inicial</Text>.
+                                                </Text>
+                                                <Text style={configuracoesStyle.txtPasso}>
+                                                    3. Confirme. O ícone do Cantinho Donuts aparece na sua tela.
+                                                </Text>
+                                                <Text style={configuracoesStyle.txtPassoDica}>
+                                                    Se não aparecer a opção, abra o site no Google Chrome.
+                                                </Text>
+                                            </View>
+                                        )}
+
+                                        <Pressable
+                                            style={({ pressed }) => [
+                                                configuracoesStyle.btnEntendiInstalar,
+                                                pressed && configuracoesStyle.btnPressionado,
+                                            ]}
+                                            onPress={() => setModalInstalar(false)}
+                                        >
+                                            <Text style={configuracoesStyle.txtConfirmarSair}>Entendi</Text>
                                         </Pressable>
                                     </Pressable>
                                 </Pressable>

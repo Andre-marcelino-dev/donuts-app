@@ -7,6 +7,10 @@ import { PlayfairDisplay_700Bold } from '@expo-google-fonts/playfair-display';
 import { useEffect } from "react";
 
 import AvisoHost from "@/components/avisoHost";
+import { prepararInstalacao } from "@/utils/instalarApp";
+
+// Precisa ser logo que o app abre: o navegador só avisa uma vez que dá para instalar
+prepararInstalacao();
 
 // Mesmas fontes do site: Poppins nos textos e Playfair Display nos títulos
 export const fontesCarregar={Poppins_400Regular, Poppins_600SemiBold, PlayfairDisplay_700Bold}

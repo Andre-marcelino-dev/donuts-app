@@ -285,6 +285,47 @@ const configuracoesStyle = StyleSheet.create({
         opacity: 0.6,
     },
 
+
+    // Instalar o app
+    txtInstalado: {
+        fontSize: 12,
+        fontFamily: fontes.negrito,
+        color: '#2e7d32',
+        marginLeft: 8,
+    },
+
+    listaPassos: {
+        marginTop: 10,
+        marginBottom: 20,
+        gap: 10,
+    },
+
+    txtPasso: {
+        fontSize: 14,
+        fontFamily: fontes.comum,
+        color: cores.chocolate,
+        lineHeight: 20,
+    },
+
+    txtPassoDestaque: {
+        fontFamily: fontes.negrito,
+        color: cores.rosa,
+    },
+
+    txtPassoDica: {
+        fontSize: 12,
+        fontFamily: fontes.comum,
+        color: cores.cinza,
+    },
+
+    btnEntendiInstalar: {
+        width: '100%',
+        backgroundColor: cores.rosa,
+        borderRadius: 14,
+        paddingVertical: 14,
+        alignItems: 'center',
+        marginBottom: 10,
+    },
 });
 
 export default configuracoesStyle;
