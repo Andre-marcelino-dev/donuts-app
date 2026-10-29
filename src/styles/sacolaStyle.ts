@@ -285,9 +285,18 @@ const sacolaStyle = StyleSheet.create({
 
     linhaEndereco: {
         flexDirection: 'row',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         marginTop: 8,
         marginVertical:5,
+    },
+
+    // Quando o cliente ainda não tem endereço
+    txtSemEndereco: {
+        flex: 1,
+        fontSize: 13,
+        fontFamily: fontes.comum,
+        color: cores.cinza,
+        lineHeight: 19,
     },
 
     txtEndereco: {
@@ -319,7 +328,15 @@ const sacolaStyle = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginTop: 10,
+        marginTop: 12,
+        paddingTop: 12,
+        borderTopWidth: 1,
+        borderTopColor: '#f3d3d7',
+        gap: 10,
+    },
+
+    blocoPrevisao: {
+        flexShrink: 1,
     },
 
     iconeEntrega: {
@@ -335,18 +352,24 @@ const sacolaStyle = StyleSheet.create({
     },
 
     txtPrevisaoValor: {
-        flex: 1,
-        fontSize: 13,
+        fontSize: 15,
         fontFamily: fontes.negrito,
         color: cores.chocolate,
-        textAlign: 'center',
+        marginTop: 2,
+    },
+
+    btnTrocarEndereco: {
+        borderWidth: 1.5,
+        borderColor: cores.rosa,
+        borderRadius: 20,
+        paddingVertical: 7,
+        paddingHorizontal: 14,
     },
 
     txtTrocarEndereco: {
         fontSize: 13,
         fontFamily: fontes.negrito,
         color: cores.rosa,
-        textDecorationLine: 'underline',
     },
 
     divisor: {

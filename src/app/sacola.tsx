@@ -253,14 +253,22 @@ export default function SacolaScreen() {
                                         source={require("@/assets/images/img/delivery-laranja.png")}
                                         resizeMode="stretch"
                                     />
-                                    <Text style={sacolaStyle.txtEndereco}>
-                                        {enderecoEntrega?.texto ??
-                                            "Nenhum endereço cadastrado. Toque em Trocar endereço."}
-                                    </Text>
+                                    {enderecoEntrega?.texto ? (
+                                        <Text style={sacolaStyle.txtEndereco}>
+                                            {enderecoEntrega.texto}
+                                        </Text>
+                                    ) : (
+                                        <Text style={sacolaStyle.txtSemEndereco}>
+                                            Nenhum endereço cadastrado.{"\n"}
+                                            Toque em Trocar endereço para adicionar.
+                                        </Text>
+                                    )}
                                 </View>
-                                <Text style={sacolaStyle.txtTelefone}>
-                                    {enderecoEntrega?.telefone ?? ""}
-                                </Text>
+                                {!!enderecoEntrega?.telefone && (
+                                    <Text style={sacolaStyle.txtTelefone}>
+                                        {enderecoEntrega.telefone}
+                                    </Text>
+                                )}
                                 {foraDaArea && (
                                     <Text style={sacolaStyle.txtAvisoEntrega}>
                                         Ainda não entregamos neste endereço. Você pode retirar o
@@ -268,14 +276,22 @@ export default function SacolaScreen() {
                                     </Text>
                                 )}
                                 <View style={sacolaStyle.linhaRodapeEntrega}>
-                                    <Text style={sacolaStyle.txtPrevisaoLabel}>
-                                        Entrega estimada em:
-                                    </Text>
-                                    <Text style={sacolaStyle.txtPrevisaoValor}>
-                                        {previsaoEntrega}
-                                    </Text>
-                                    <Pressable>
-                                        <Text style={sacolaStyle.txtTrocarEndereco} onPress={() => router.navigate("/enderecos")}>
+                                    <View style={sacolaStyle.blocoPrevisao}>
+                                        <Text style={sacolaStyle.txtPrevisaoLabel}>
+                                            Entrega estimada
+                                        </Text>
+                                        <Text style={sacolaStyle.txtPrevisaoValor} numberOfLines={1}>
+                                            {previsaoEntrega}
+                                        </Text>
+                                    </View>
+                                    <Pressable
+                                        style={({ pressed }) => [
+                                            sacolaStyle.btnTrocarEndereco,
+                                            pressed && { opacity: 0.6 },
+                                        ]}
+                                        onPress={() => router.navigate("/enderecos")}
+                                    >
+                                        <Text style={sacolaStyle.txtTrocarEndereco}>
                                             Trocar endereço
                                         </Text>
                                     </Pressable>
