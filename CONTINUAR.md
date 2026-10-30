@@ -14,9 +14,11 @@ O projeto nasceu como cópia do The Gusta / Confeitaria DaVilla. Por isso muitas
 - **Novo em 30/10:**
   - **Banco zerado** para recadastrar tudo do Cantinho Donuts. Ficou só o administrador André Marcelino (`tbl_usuarios`, id 7); clientes, pedidos, cardápio, banners, cupons, estoque, textos do site, configurações e zonas de entrega foram apagados. Backup completo de antes em `C:\xampp\htdocs\producao_locaweb\atualizacao_2026-10-30_zerar_banco\backup_antes_de_zerar.sql` (junto com o SQL usado). O André está recadastrando pelo painel.
   - Depois de zerar, refazer no painel: localização da loja (`-23.5109284`, `-46.4156827`) e zonas de entrega. Contas de cliente antigas não existem mais (criar conta nova para testar).
-  - O login do painel ainda é `admin@thegusta.com` (do site antigo); trocar pelo perfil no painel.
+  - O login do painel já foi trocado pelo André (o e-mail do site antigo não vale mais).
   - No phpMyAdmin a caixa "Ativa a verificação de chaves estrangeiras" anula o `SET FOREIGN_KEY_CHECKS = 0` — para apagar, usar `DELETE` na ordem certa (filhas antes).
   - **App:** tiradas as imagens e listas de exemplo do The Gusta (`banner.png`, `bolo01.png`, ícones de categoria); banners da Home voltaram a aparecer (as imagens ficavam com largura 0); botão "Aplicar" do cupom não sai mais da caixa; Sacola mostra "R$ X cada" e o total do item embaixo; e-mail reserva do Fale Conosco trocado.
+  - **Backend: Git igual ao servidor.** A foto das categorias (`foto_categoria`, fotos em `davilla/images/categoria/`) e o painel para celular (`responsivo.css`) estavam só no servidor; foram baixados (`producao_locaweb\servidor_2026-10-30\`) e entraram no Git. A tentativa antiga `imagem_categoria` foi descartada (cópia em `producao_locaweb\tentativa_imagem_categoria_descartada\`).
+  - **Senha do painel:** `Usuario.php` ganhou `getAuthPasswordName()` = `senha_usuario` (antes, senha trocada pelo SQL com hash de custo diferente de 12 dava erro 500 no login). Título do painel voltou de "Davilla" para "Cantinho Donuts". Os dois arquivos já estão no servidor (`producao_locaweb\atualizacao_2026-10-30_senha_titulo\`). O painel não tem "esqueci a senha": se precisar, gerar o hash com `C:\xampp\php\php.exe -r "echo password_hash('SENHA', PASSWORD_BCRYPT, ['cost'=>12]);"` e fazer `UPDATE tbl_usuarios SET senha_usuario = '...' WHERE id_usuario = 7;`. No dia a dia, trocar pelo painel (Perfil → alterar senha).
 - **Novo em 29/10:**
   - **Criar conta** funcionando (`POST /auth/cadastro`). CPF, nascimento, endereço e foto do cliente viraram opcionais; o cliente completa depois no perfil.
   - **Esqueci minha senha** com código de 6 números por e-mail (`POST /auth/esqueci-senha` e `POST /auth/redefinir-senha`). Testado e funcionando.
@@ -182,11 +184,10 @@ Os itens 1 e 2 esperam o André avisar (por enquanto são dados de teste).
 1. **WhatsApp e endereço da loja:** hoje `11 98816-1211` e Rua Augusto Fiordelice, 310 (padrão de `config/services.php`). Quando ele passar os reais, montar as linhas do `.env` (`LOJA_WHATSAPP`, `LOJA_ENDERECO`, `LOJA_BAIRRO`, `LOJA_CIDADE`, `LOJA_CEP`). O botão "Fazer meu pedido" da página Região usa esse WhatsApp.
 2. **No painel:** cadastrar as zonas de entrega reais (km, taxa, prazo, bairros) — foram apagadas ao zerar o banco em 30/10.
 3. **Opcional:** gravar no banco a data em que o cliente aceitou os termos de uso.
-4. **Foto das categorias: o servidor está mais novo que o Git.** No servidor funciona com a coluna `foto_categoria` (migration `2026_10_29_000000_add_foto_categoria_to_tbl_categorias`, fotos em `davilla/images/categoria/`). Essa versão não está no GitHub nem neste PC. Neste PC (`~/dev/senac/cantinho-donuts`) há outra tentativa não terminada e sem commit, com `imagem_categoria` — **não mandar para o servidor**. Plano (combinado em 30/10, fazer no dia seguinte): pelo FileZilla, baixar do servidor as pastas `app`, `resources`, `routes` e `database` da pasta do Laravel para `C:\xampp\htdocs\producao_locaweb\servidor_2026-10-30\`; comparar com o projeto, trazer a versão do servidor, descartar a tentativa `imagem_categoria`, fazer o commit e o push.
 
 ---
 
 ## 9. Últimos commits
 
 - **App:** `14a8969` — preço "cada" na Sacola (antes: `a4a177d`, imagens antigas removidas, banners e cupom). Ver `git log --oneline`.
-- **Backend:** `1ea399f` — esqueci minha senha com código por e-mail (antes: `d75189c`, cadastro pelo app).
+- **Backend:** `1000100` — foto das categorias e painel para celular trazidos do servidor, correção da senha do painel (antes: `1ea399f`, esqueci minha senha).
