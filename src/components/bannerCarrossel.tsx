@@ -64,17 +64,8 @@ export default function BannerCarrossel() {
         return () => clearTimeout(timer);
     }, [atual, banners.length, largura]);
 
-    // Enquanto carrega ou se não vier nenhum banner do banco, mostra o banner fixo
-    if (banners.length === 0) {
-        return (
-            <Image
-                style={[bannerCarrosselStyle.container, bannerCarrosselStyle.imagem]}
-                source={require("@/assets/images/img/banner.png")}
-                resizeMode="stretch"
-            />
-        );
-    }
-
+    // A caixa fica sempre na tela (mesmo vazia, enquanto carrega) para a
+    // largura já estar medida quando os banners chegarem.
     return (
         <View
             style={bannerCarrosselStyle.container}

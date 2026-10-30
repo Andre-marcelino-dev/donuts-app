@@ -14,7 +14,7 @@ const PADRAO: ConfiguracoesLoja = {
     taxaEntrega: 6,
     previsaoEntrega: "45 - 60 min",
     whatsapp: "5511988161211",
-    email: "contato_confeitaria@ctrlaltdev.tipi5.smpsistema.com.br",
+    email: "contato.cantinho_donuts@adminfo.dev.br",
 };
 
 // Última resposta da API, para as telas abrirem já com o valor certo

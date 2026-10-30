@@ -21,35 +21,6 @@ import { voltar } from "@/utils/navegacao";
 import { cores } from "@/styles/variaveis";
 import { API_BASE_URL, buscarCategorias, Categoria } from "@/utils/categorias";
 
-// Usado enquanto a API carrega ou se a busca falhar.
-const categoriasIniciais: Categoria[] = [
-    {
-        id: 1,
-        nome: "Bolos",
-        icone: require("@/assets/images/img/bolo.png"),
-    },
-    {
-        id: 2,
-        nome: "Doces",
-        icone: require("@/assets/images/img/brigadeiro.png"),
-    },
-    {
-        id: 3,
-        nome: "Tortas",
-        icone: require("@/assets/images/img/torta.png"),
-    },
-    {
-        id: 4,
-        nome: "Bebidas",
-        icone: require("@/assets/images/img/copo-de-plastico.png"),
-    },
-    {
-        id: 5,
-        nome: "Presentes",
-        icone: require("@/assets/images/img/presente-de-supermercado.png"),
-    },
-];
-
 // Deixa o texto sem acento e minúsculo, para "limao" achar "Limão"
 function normalizar(texto: string) {
     return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
@@ -79,7 +50,7 @@ type ProdutoApi = {
 };
 
 export default function CardapioScreen() {
-    const [categorias, setCategorias] = useState<Categoria[]>(categoriasIniciais);
+    const [categorias, setCategorias] = useState<Categoria[]>([]);
 
     // Carregar as categorias da API
     useEffect(() => {

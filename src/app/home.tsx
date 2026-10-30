@@ -51,72 +51,11 @@ type ProdutoApi = {
     categoria_produto: { nome_categoria: string };
 };
 
-// Usado enquanto a API carrega ou se a busca falhar.
-const destaquesIniciais: ProdutoDestaque[] = [
-    {
-        id: 1,
-        slug: "",
-        nome: "Bolo de banana fit",
-        descricao: "Banana Prata com canela e gergelim",
-        categoria: "Bolos",
-        preco: "R$18,00",
-        imagem: require("@/assets/images/img/bolo01.png"),
-        favorito: false,
-    },
-    {
-        id: 2,
-        slug: "",
-        nome: "Bolo de banana fit",
-        descricao: "Banana Prata com canela e gergelim",
-        categoria: "Bolos",
-        preco: "R$18,00",
-        imagem: require("@/assets/images/img/bolo01.png"),
-        favorito: false,
-    },
-    {
-        id: 3,
-        slug: "",
-        nome: "Brigadeiro Gourmet",
-        descricao: "Banana Prata com canela e gergelim",
-        categoria: "Doces",
-        preco: "R$18,00",
-        imagem: require("@/assets/images/img/bolo01.png"),
-        favorito: false,
-    },
-    {
-        id: 4,
-        slug: "",
-        nome: "Brigadeiro Gourmet",
-        descricao: "Banana Prata com canela e gergelim",
-        categoria: "Doces",
-        preco: "R$18,00",
-        imagem: require("@/assets/images/img/bolo01.png"),
-        favorito: false,
-    },
-];
-
-// Usado enquanto a API carrega ou se a busca falhar.
-const categoriasIniciais: Categoria[] = [
-    { id: 1, nome: "Bolos", icone: require("@/assets/images/img/bolo.png") },
-    { id: 2, nome: "Doces", icone: require("@/assets/images/img/brigadeiro.png") },
-    { id: 3, nome: "Tortas", icone: require("@/assets/images/img/torta.png") },
-    {
-        id: 4,
-        nome: "Bebidas",
-        icone: require("@/assets/images/img/copo-de-plastico.png"),
-    },
-    {
-        id: 5,
-        nome: "Kits",
-        icone: require("@/assets/images/img/presente-de-supermercado.png"),
-    },
-];
-
 export default function HomeScreen() {
   
-    const [destaques, setDestaques] = useState<ProdutoDestaque[]>(destaquesIniciais);
+    const [destaques, setDestaques] = useState<ProdutoDestaque[]>([]);
     const [imagensComErro, setImagensComErro] = useState<number[]>([]);
-    const [categorias, setCategorias] = useState<Categoria[]>(categoriasIniciais);
+    const [categorias, setCategorias] = useState<Categoria[]>([]);
     const [busca, setBusca] = useState("");
     const [fotoPerfil, setFotoPerfil] = useState<string | null>(null);
     const [nomeCliente, setNomeCliente] = useState("Cliente");

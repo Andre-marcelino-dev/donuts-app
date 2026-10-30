@@ -217,6 +217,8 @@ const sacolaStyle = StyleSheet.create({
 
     inputCupom: {
         flex: 1,
+        minWidth: 0, // no navegador o campo não encolhe sem isso e empurra o botão para fora
+        width: '100%',
         borderColor: cores.rosa,
         borderWidth: 2,
         borderRadius: 10,
@@ -235,6 +237,7 @@ const sacolaStyle = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginLeft: 10,
+        flexShrink: 0,
     },
 
     txtBtnCupom: {
