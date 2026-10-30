@@ -183,7 +183,7 @@ export default function SacolaScreen() {
                                         <View style={sacolaStyle.rodapeItem}>
                                             <View style={sacolaStyle.precos}>
                                                 <Text style={sacolaStyle.precoUnitario}>
-                                                    {formatarPreco(item.preco)}
+                                                    {formatarPreco(item.preco)} cada
                                                 </Text>
                                                 <Text style={sacolaStyle.precoItem}>
                                                     {formatarPreco(item.preco * item.quantidade)}

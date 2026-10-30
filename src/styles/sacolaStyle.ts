@@ -140,9 +140,10 @@ const sacolaStyle = StyleSheet.create({
         marginTop: 8,
     },
 
+    // Preço de 1 unidade em cima, total do item (preço × quantidade) embaixo
     precos: {
-        flexDirection: 'row',
-        alignItems: 'baseline',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
         flexShrink: 1,
     },
 
@@ -150,7 +151,6 @@ const sacolaStyle = StyleSheet.create({
         fontSize: 13,
         fontFamily: fontes.comum,
         color: cores.cinza,
-        marginRight: 10,
     },
 
     precoItem: {
