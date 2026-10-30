@@ -182,7 +182,7 @@ Os itens 1 e 2 esperam o André avisar (por enquanto são dados de teste).
 1. **WhatsApp e endereço da loja:** hoje `11 98816-1211` e Rua Augusto Fiordelice, 310 (padrão de `config/services.php`). Quando ele passar os reais, montar as linhas do `.env` (`LOJA_WHATSAPP`, `LOJA_ENDERECO`, `LOJA_BAIRRO`, `LOJA_CIDADE`, `LOJA_CEP`). O botão "Fazer meu pedido" da página Região usa esse WhatsApp.
 2. **No painel:** cadastrar as zonas de entrega reais (km, taxa, prazo, bairros) — foram apagadas ao zerar o banco em 30/10.
 3. **Opcional:** gravar no banco a data em que o cliente aceitou os termos de uso.
-4. **Backend com mudanças sem commit** (imagem das categorias, em `~/dev/senac/cantinho-donuts`): terminar, fazer o commit e mandar para a Locaweb.
+4. **Foto das categorias: o servidor está mais novo que o Git.** No servidor funciona com a coluna `foto_categoria` (migration `2026_10_29_000000_add_foto_categoria_to_tbl_categorias`, fotos em `davilla/images/categoria/`). Essa versão não está no GitHub nem neste PC. Neste PC (`~/dev/senac/cantinho-donuts`) há outra tentativa não terminada e sem commit, com `imagem_categoria` — **não mandar para o servidor**. Plano (combinado em 30/10, fazer no dia seguinte): pelo FileZilla, baixar do servidor as pastas `app`, `resources`, `routes` e `database` da pasta do Laravel para `C:\xampp\htdocs\producao_locaweb\servidor_2026-10-30\`; comparar com o projeto, trazer a versão do servidor, descartar a tentativa `imagem_categoria`, fazer o commit e o push.
 
 ---
 
